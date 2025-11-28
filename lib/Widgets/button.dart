@@ -14,7 +14,7 @@ class MeuBotao extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromARGB(255, 33, 243, 51),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       ),
       onPressed: onPressed,
