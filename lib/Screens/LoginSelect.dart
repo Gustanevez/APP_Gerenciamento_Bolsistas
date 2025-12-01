@@ -1,16 +1,125 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
+import 'package:gerenciamento_bolsistas/Style/colors.dart';
+import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
+import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+enum Character {coordenador,bolsista}
+
+class SelectLogin extends StatefulWidget {
+  final ValueChanged<Character?> onChanged;
+  const SelectLogin({super.key,required this.onChanged});
+
+  @override
+  State<SelectLogin> createState() => SelectLoginState();
+
+}
+
+class SelectLoginState extends State<SelectLogin> {
+  Character? _character = Character.coordenador;
+
+  void setCharacter(Character? value){
+    setState(() {
+      _character = value;
+    });
+    widget.onChanged(value);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget> [
+          ListTile(
+            
+            title: Text('Coordenador',style: TextStyle(
+              fontFamily: 'ABeeZee',fontSize: 14),),
+            leading: Radio<Character>(
+              value: Character.coordenador,
+              groupValue: _character,
+              onChanged: setCharacter,
+              ),
+          ),
+          ListTile(
+             title: Text('Bolsista',style: TextStyle(fontFamily: 'ABeeZee',fontSize: 14),),
+             leading: Radio<Character>(value: Character.bolsista,
+             groupValue: _character,
+             onChanged: setCharacter,
+             ),
+          )
+        ],  
+      
+    );
+  }
+}
+
+
+
+class Login extends StatefulWidget {
+  const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  Character? selected;
+
+  @override
+  Widget build(BuildContext context) {
+     return Material(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height ,
-        child:
-          Image.asset('assets\Image\Gemini_Generated_Image_56tilv56tilv56ti-removebg-preview 1.png'), 
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset('assets/Image/logo.png',height: 500,width: 500,),
+
+            SizedBox(height: 4,),
+
+            Text('Selecione uma das opções abaixo: ',style: TextStyle(
+              fontFamily: 'ABeeZee',fontSize: 14
+            ),),
+
+            SizedBox(height: 50,),
+            Column(
+              children: [
+              SelectLogin(onChanged: (value){
+                setState(() {
+                  selected = value;
+                });
+              })
+              ],  
+            ),
+           const SizedBox(height: 100),
+
+            Column(
+              children: [
+               Buttonactions(text: 'Continuar',onPressed: () {
+                if(selected == Character.coordenador){
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => const Homepagecoordenador()));
+                }else if(selected == Character.bolsista){
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => const Homepagebolsista()));
+                }else{
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Selecione uma opção',style: TextStyle(
+                        fontFamily: 'ABeeZee',
+                        fontSize: 10,
+                      ),))
+                  );
+                }
+               },size: const Size(225, 45),color: cor4,)
+              ],
+            )
+          ],
+         
+        )
+          
       ),
+      
     );
   }
 }
