@@ -30,7 +30,7 @@ class Homepagebolsista extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.center,
          children: [
           Button(text: 'Notificações',onPressed: () {
-          },size: const Size(335,46),color:cor1,icon: Icons.notifications,)
+          },size: const Size(335,46),color:cor1,icon: Image.asset('assets/image/logo.png',width: 12,height: 12,))
         ]
        ),
        SizedBox(height: 40,),

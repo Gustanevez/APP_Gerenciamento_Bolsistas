@@ -7,7 +7,7 @@ class Button extends StatelessWidget{
   final VoidCallback?  callback;
   final Size? size;
   final Color? color;
-  final IconData? icon;
+  final Widget? icon;
 
   const Button({Key? key,required String text, VoidCallback? onPressed,this.size,this.color,this.icon})
       : _text = text,
@@ -16,11 +16,11 @@ class Button extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-   return ElevatedButton(key: Key(_text),onPressed: callback, 
+   return OutlinedButton(key: Key(_text),onPressed: callback, 
    style: ButtonStyle(
     shape: WidgetStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25))),
+        borderRadius: BorderRadius.circular(14))),
         backgroundColor: WidgetStateProperty.all<Color>(
           color ?? cor1,
         ),
@@ -29,9 +29,9 @@ class Button extends StatelessWidget{
         )
    ),
    child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.start ,
     children: [
-      if (icon != null) Icon(icon,color: corLetra1,),             
+      if (icon != null) icon!,            
       if (icon != null) const SizedBox(width: 8),
       Text(_text,style: TextStyle(fontFamily: 'ABeeZee',color: corLetra1,),)
     ],
