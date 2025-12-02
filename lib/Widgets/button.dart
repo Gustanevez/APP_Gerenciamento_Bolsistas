@@ -24,16 +24,15 @@ class Button extends StatelessWidget{
         backgroundColor: WidgetStateProperty.all<Color>(
           color ?? cor1,
         ),
-        fixedSize: WidgetStateProperty.all<Size>(
-          size ?? const Size(23, 26),
-        )
+        fixedSize: size != null? WidgetStateProperty.all<Size>(size!)
+        :null,
    ),
    child: Row(
     mainAxisAlignment: MainAxisAlignment.start ,
     children: [
       if (icon != null) icon!,            
       if (icon != null) const SizedBox(width: 8),
-      Text(_text,style: TextStyle(fontFamily: 'ABeeZee',color: corLetra1,),)
+        Text(_text,style: TextStyle(fontFamily: 'ABeeZee',color: corLetra1,),)
     ],
    ),
    );
