@@ -33,7 +33,7 @@ class SelectLoginState extends State<SelectLogin> {
         children: <Widget> [
           ListTile(
             
-            title: Text('Coordenador',style: TextStyle(
+            title: const Text('Coordenador',style: TextStyle(
               fontFamily: 'ABeeZee',fontSize: 14),),
             leading: Radio<Character>(
               value: Character.coordenador,
@@ -42,7 +42,7 @@ class SelectLoginState extends State<SelectLogin> {
               ),
           ),
           ListTile(
-             title: Text('Bolsista',style: TextStyle(fontFamily: 'ABeeZee',fontSize: 14),),
+             title:const Text('Bolsista',style: TextStyle(fontFamily: 'ABeeZee',fontSize: 14),),
              leading: Radio<Character>(value: Character.bolsista,
              groupValue: _character,
              onChanged: setCharacter,
@@ -78,7 +78,7 @@ class _LoginState extends State<Login> {
 
             SizedBox(height: 4,),
 
-            Text('Selecione uma das opções abaixo: ',style: TextStyle(
+            const Text('Selecione uma das opções abaixo: ',style: TextStyle(
               fontFamily: 'ABeeZee',fontSize: 14
             ),),
 
@@ -92,7 +92,7 @@ class _LoginState extends State<Login> {
               })
               ],  
             ),
-           const SizedBox(height: 100),
+           const SizedBox(height: 10),
 
             Column(
               children: [
@@ -103,13 +103,6 @@ class _LoginState extends State<Login> {
                 }else if(selected == Character.bolsista){
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => const Homepagebolsista()));
-                }else{
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Selecione uma opção',style: TextStyle(
-                        fontFamily: 'ABeeZee',
-                        fontSize: 10,
-                      ),))
-                  );
                 }
                },size: const Size(225, 45),color: cor4,)
               ],
