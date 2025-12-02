@@ -18,7 +18,6 @@ class Homepagecoordenador extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            
             Text('Olá,coordenador',style: TextStyle(fontFamily: ' ABeeZee',color: corLetra1,fontSize: 16))
           ],
         ),
@@ -33,7 +32,7 @@ class Homepagecoordenador extends StatelessWidget {
           children: [
               
                 Button(text: 'Notificações',onPressed: () {
-          },size: const Size(335,46),color:cor1,icon:Image.asset('assets/Image/notificacao.png',)),
+          },size: Size(MediaQuery.of(context).size.width * 0.9,46),color:cor1,icon:Image.asset('assets/Image/notificacao.png',)),
           
         const  SizedBox(height: 15,),
           Column(
@@ -45,25 +44,30 @@ class Homepagecoordenador extends StatelessWidget {
          const SizedBox(height: 25,),     
 
          SizedBox(
-          height: 350,
+          height: MediaQuery.of(context).size.height*0.3,
           child:ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              Button(text: 'teste',size: const Size(160, 176),
+              Button(text: 'teste',size:  Size(MediaQuery.of(context).size.width * 0.3,
+              (MediaQuery.of(context).size.height * 0.01)),
               ),
-              SizedBox(width: 20,),
-              Button(text: 'teste',size: const Size(160, 176),
+              Button(text: 'teste',size:  Size(MediaQuery.of(context).size.width * 0.3,
+              (MediaQuery.of(context).size.height * 0.01)),
               ),
-              SizedBox(width: 30,),
-              Button(text: 'teste',size: const Size(160, 176),
+              Button(text: 'teste',size:  Size(MediaQuery.of(context).size.width * 0.3,
+              (MediaQuery.of(context).size.height * 0.01)),
               ),
+              Button(text: 'teste',size:  Size(MediaQuery.of(context).size.width * 0.3,
+              (MediaQuery.of(context).size.height * 0.01)),
+              ),
+              
               
 
             ],
           ) ,
          ),  
                 
-          SizedBox(height:40),
+          SizedBox(height:20),
         
               Button(text: 'Bolsista',onPressed: () {
           },size: const Size(283,50),color:cor1,icon: Image.asset('assets/Image/Relatorio.png')),
