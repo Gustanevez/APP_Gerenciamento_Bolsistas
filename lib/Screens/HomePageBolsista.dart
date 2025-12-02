@@ -7,14 +7,14 @@ class Homepagebolsista extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: Drawer(
-      backgroundColor: cor2,
+        endDrawer: Drawer(
+        backgroundColor: cor2,
     ),
     appBar: AppBar(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text("Olá,Bolsista",style: TextStyle(fontFamily: 'ABeeZee',fontSize: 16 ),),
+          const Text("Olá,Bolsista",style: TextStyle(fontFamily: 'ABeeZee',fontSize: 16 ),),
         ],
       ),
     ),
@@ -29,7 +29,7 @@ class Homepagebolsista extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
          children: [
-          Button(text: 'Notificações',onPressed: () {
+          Button(text:'Notificações',onPressed: () {
           },size: const Size(335,46),color:cor1,icon: Image.asset('assets/image/logo.png',width: 12,height: 12,))
         ]
        ),
@@ -43,7 +43,7 @@ class Homepagebolsista extends StatelessWidget{
             width:337 ,
             color: cor1,
            child: Align(alignment: Alignment.topLeft,
-           child:Text('Metas do projeto') ,),
+           child: const Text('Metas do projeto') ,),
            )
           ],
         )
