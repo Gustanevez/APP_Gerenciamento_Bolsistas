@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/button.dart';
+import 'package:gerenciamento_bolsistas/Widgets/Menu.dart';
+
 class Homepagebolsista extends StatelessWidget{
   const Homepagebolsista({super.key});
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        endDrawer: Drawer(
+        drawer: const Menu(), 
         backgroundColor: cor2,
-    ),
+    
     appBar: AppBar(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -30,7 +32,7 @@ class Homepagebolsista extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.center,
          children: [
           Button(text:'Notificações',onPressed: () {
-          },size: const Size(335,46),color:cor1,icon: Image.asset('assets/image/logo.png',width: 12,height: 12,))
+          },size:Size(MediaQuery.of(context).size.width * 0.9,46), color:cor1,icon: Image.asset('assets/image/logo.png',width: 12,height: 12,))
         ]
        ),
        SizedBox(height: 40,),

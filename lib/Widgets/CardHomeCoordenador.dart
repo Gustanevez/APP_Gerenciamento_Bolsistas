@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
+import 'package:gerenciamento_bolsistas/Widgets/button.dart';
 
 
 class Cardhomecoordenador extends StatefulWidget {
@@ -25,6 +26,7 @@ class _CardhomecoordenadorState extends State<Cardhomecoordenador> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Button(text: '')
       
     );
   }
