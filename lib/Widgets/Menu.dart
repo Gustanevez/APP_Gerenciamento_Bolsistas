@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/LoginSelect.dart';
+import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -65,7 +66,14 @@ class Menu extends StatelessWidget {
               iconPath:
                   "assets/Image/data-limite.png", // Usando 'data-limite.png'
               text: "Projetos e Metas",
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Registerproject(),
+                  ),
+                );
+              },
             ),
             _menuItem(
               iconPath:
