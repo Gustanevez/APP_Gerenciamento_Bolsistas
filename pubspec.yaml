@@ -72,6 +72,9 @@ flutter:
     - assets\Image\configuracoes.png
     - assets\Image\ajuda.png
     - assets\Image\hamburger.png
+    - assets\Image\topo.png
+    - assets\Image\suap.png
+    - assets\Image\google.png
 
     
     

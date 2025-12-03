@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
+import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 
-class LoginBolsista extends StatefulWidget {
-  const LoginBolsista({super.key});
+class LoginSenha extends StatefulWidget {
+  final String tipoUsuario; // "coordenador" ou "bolsista"
+
+  const LoginSenha({super.key, required this.tipoUsuario});
 
   @override
-  State<LoginBolsista> createState() => _LoginBolsistaState();
+  State<LoginSenha> createState() => _LoginSenhaState();
 }
 
-class _LoginBolsistaState extends State<LoginBolsista> {
+class _LoginSenhaState extends State<LoginSenha> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -19,7 +22,7 @@ class _LoginBolsistaState extends State<LoginBolsista> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // ---- IMAGEM NO TOPO ----
+              // ---- IMAGEM DO TOPO ----
               Image.asset(
                 'assets/Image/topo.png',
                 width: MediaQuery.of(context).size.width,
@@ -36,10 +39,12 @@ class _LoginBolsistaState extends State<LoginBolsista> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Text(
-                        "Login",
+                      Text(
+                        widget.tipoUsuario == "coordenador"
+                            ? "Login Coordenador"
+                            : "Login Bolsista",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
@@ -72,14 +77,7 @@ class _LoginBolsistaState extends State<LoginBolsista> {
 
                       // ---- BOTÃO ENTRAR ----
                       ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const (),
-                            ),
-                          );
-                        },
+                        onPressed: _entrar,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF4CAF50),
                           shape: RoundedRectangleBorder(
@@ -110,6 +108,34 @@ class _LoginBolsistaState extends State<LoginBolsista> {
                           _socialButton("assets/Image/suap.png"),
                         ],
                       ),
+
+                      const SizedBox(height: 25),
+
+                      // ---- CRIAR CONTA ----
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Não possui conta? ",
+                            style: TextStyle(fontSize: 14),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              // 👉 aqui você coloca a navegação para criar conta
+                            },
+                            child: const Text(
+                              "Crie agora",
+                              style: TextStyle(
+                                color: Color(0xFF4CAF50),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -122,14 +148,31 @@ class _LoginBolsistaState extends State<LoginBolsista> {
   }
 
   // ------------------------
-  // COMPONENTES
+  // FUNÇÃO DO BOTÃO ENTRAR
+  // ------------------------
+  void _entrar() {
+    if (widget.tipoUsuario == "coordenador") {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Homepagecoordenador()),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Homepagebolsista()),
+      );
+    }
+  }
+
+  // ------------------------
+  // COMPONENTES DO LAYOUT
   // ------------------------
 
-  /// BOTÃO SOCIAL — SOMENTE IMAGEM
+  /// Botão social com ícone
   Widget _socialButton(String imagePath) {
     return Container(
-      width: 100, // MUDE AQUI
-      height: 50, // MUDE AQUI
+      width: 100,
+      height: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.grey.shade300),
@@ -139,7 +182,7 @@ class _LoginBolsistaState extends State<LoginBolsista> {
     );
   }
 
-  /// CAMPO EMAIL
+  /// Campo Email
   Widget _buildEmailField() {
     return TextFormField(
       decoration: InputDecoration(
@@ -159,7 +202,7 @@ class _LoginBolsistaState extends State<LoginBolsista> {
     );
   }
 
-  /// CAMPO SENHA
+  /// Campo Senha
   Widget _buildPasswordField() {
     return TextFormField(
       obscureText: true,

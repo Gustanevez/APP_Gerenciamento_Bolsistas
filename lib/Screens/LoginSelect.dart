@@ -100,10 +100,10 @@ class _LoginState extends State<Login> {
                Buttonactions(text: 'Continuar',onPressed: () {
                 if(selected == Character.coordenador){
                   Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const LoginBolsista()));
+                    builder: (context) => LoginSenha(tipoUsuario: 'coordenador')));
                 }else if(selected == Character.bolsista){
                   Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const LoginBolsista()));
+                    builder: (context) => const LoginSenha(tipoUsuario: 'bolsista',)));
                 }
                },size: Size(MediaQuery.of(context).size.width * 0.9,46),color: cor4,)
               ],
