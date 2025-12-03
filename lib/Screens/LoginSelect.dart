@@ -3,6 +3,7 @@ import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
+import 'package:gerenciamento_bolsistas/Screens/LoginSenha.dart';
 
 enum Character {coordenador,bolsista}
 
@@ -99,12 +100,12 @@ class _LoginState extends State<Login> {
                Buttonactions(text: 'Continuar',onPressed: () {
                 if(selected == Character.coordenador){
                   Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const Homepagecoordenador()));
+                    builder: (context) => const LoginBolsista()));
                 }else if(selected == Character.bolsista){
                   Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const Homepagebolsista()));
+                    builder: (context) => const LoginBolsista()));
                 }
-               },size: const Size(225, 45),color: cor4,)
+               },size: Size(MediaQuery.of(context).size.width * 0.9,46),color: cor4,)
               ],
             )
           ],
