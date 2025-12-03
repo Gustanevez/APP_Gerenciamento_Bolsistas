@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Widgets/Menu.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Registerproject extends StatelessWidget {
+class Registerproject extends ConsumerStatefulWidget {
   const Registerproject({super.key});
 
+  @override
+  ConsumerState<Registerproject> createState () => _Registerproject();
+
+}
+
+class _Registerproject extends ConsumerState<Registerproject> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +95,9 @@ class Registerproject extends StatelessWidget {
                 SizedBox(height: 30),
                 Buttonactions(
                   text: 'Salvar',
-                  onPressed: () {},
+                  onPressed: () {
+                    
+                  },
                   size: Size(MediaQuery.of(context).size.width * 0.6, 46),
                   color: cor4,
                 ),
