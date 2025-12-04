@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/LoginSelect.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
+import 'package:gerenciamento_bolsistas/Screens/relatorio.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -69,9 +72,7 @@ class Menu extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => Registerproject(),
-                  ),
+                  MaterialPageRoute(builder: (context) => Registerproject()),
                 );
               },
             ),
@@ -79,7 +80,14 @@ class Menu extends StatelessWidget {
               iconPath:
                   "assets/Image/relatorio1.png", // Usando o 'Relatorio.png'
               text: "Relatórios",
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RelatorioScreen(),
+                  ),
+                );
+              },
             ),
             _menuItem(
               iconPath:
