@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gerenciamento_bolsistas/Screens/relatorio.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/button.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
 import 'package:gerenciamento_bolsistas/Widgets/CardHomeCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Widgets/Menu.dart';
+import 'package:gerenciamento_bolsistas/Models/Project.dart';
+import 'package:gerenciamento_bolsistas/Models/Project_State_provider.dart';
+import 'package:gerenciamento_bolsistas/Models/Project_provider.dart';
 
-class Homepagecoordenador extends StatelessWidget {
+class Homepagecoordenador extends ConsumerWidget {
   const Homepagecoordenador({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final projetos = ref.watch(projectProvider);
+
     return Scaffold(
       drawer: const Menu(),
       appBar: AppBar(
@@ -107,14 +114,14 @@ class Homepagecoordenador extends StatelessWidget {
                       ),
                     ),
                     Button(
-                      text: 'teste',
+                      text: 'teste:',
                       size: Size(
                         MediaQuery.of(context).size.width * 0.3,
                         (MediaQuery.of(context).size.height * 0.01),
                       ),
                     ),
                     Button(
-                      text: 'teste',
+                      text: 'teste ${projetos.length}',
                       size: Size(
                         MediaQuery.of(context).size.width * 0.3,
                         (MediaQuery.of(context).size.height * 0.01),
