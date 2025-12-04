@@ -15,7 +15,7 @@ class ProjetoMetasPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // TEXTO SUPERIOR (PADRÃO DO APP)
+              // TEXTO SUPERIOR
               Align(
                 alignment: Alignment.centerRight,
                 child: const Text(
@@ -36,14 +36,13 @@ class ProjetoMetasPage extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'ABeeZee',
                   fontSize: 16,
-                  fontWeight: FontWeight.w600,
                   color: Colors.black87,
                 ),
               ),
 
               const SizedBox(height: 50),
 
-              // FORMULÁRIO (PADRONIZADO)
+              // FORMULÁRIO
               _campo("Selecione Projeto/Bolsista"),
               const SizedBox(height: 20),
 
@@ -58,7 +57,7 @@ class ProjetoMetasPage extends StatelessWidget {
 
               const SizedBox(height: 300),
 
-              // BOTÕES PADRONIZADOS COM SEU BUTTON
+              // BOTÕES
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

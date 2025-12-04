@@ -32,7 +32,7 @@ class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // TEXTO SUPERIOR (PADRÃO DO APP)
+              // TEXTO SUPERIOR
               Align(
                 alignment: Alignment.centerRight,
                 child: const Text(
@@ -47,20 +47,19 @@ class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
 
               const SizedBox(height: 65),
 
-              // TÍTULO PRINCIPAL
+              // TÍTULO PRINCIPAL (sem negrito)
               const Text(
                 "Cadastrar Projeto",
                 style: TextStyle(
                   fontFamily: 'ABeeZee',
                   fontSize: 16,
-                  fontWeight: FontWeight.w600,
                   color: Colors.black87,
                 ),
               ),
 
               const SizedBox(height: 50),
 
-              // CAMPOS DE TEXTO PADRÃO
+              // CAMPOS DE TEXTO
               _campo("Título do Projeto", controller: _titulo),
               const SizedBox(height: 20),
 
@@ -76,7 +75,7 @@ class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
 
               const SizedBox(height: 300),
 
-              // BOTÃO PADRÃO
+              // BOTÃO
               Buttonactions(
                 text: "Salvar Projeto",
                 color: cor4,
@@ -94,7 +93,7 @@ class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
     );
   }
 
-  // CAMPOS DE TEXTO PADRÃO
+  // CAMPO DE TEXTO
   Widget _campo(String label, {required TextEditingController controller}) {
     return SizedBox(
       width: double.infinity,

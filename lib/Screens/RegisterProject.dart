@@ -78,16 +78,11 @@ class _ListaMetas extends StatelessWidget {
         children: [
           const Text(
             "Metas",
-            style: TextStyle(
-              fontFamily: 'ABeeZee',
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
+            style: TextStyle(fontFamily: 'ABeeZee', fontSize: 16),
           ),
 
           const SizedBox(height: 15),
 
-          /// ITENS DE METAS
           const _MetaItem(
             numero: "1.",
             titulo: "Concluir Revisão Bibliográfica",
@@ -147,13 +142,7 @@ class _MetaItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            numero,
-            style: const TextStyle(
-              fontFamily: 'ABeeZee',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text(numero, style: const TextStyle(fontFamily: 'ABeeZee')),
 
           const SizedBox(width: 10),
 
@@ -163,11 +152,7 @@ class _MetaItem extends StatelessWidget {
               children: [
                 Text(
                   titulo,
-                  style: const TextStyle(
-                    fontFamily: 'ABeeZee',
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 14),
                 ),
                 const SizedBox(height: 4),
 
@@ -221,11 +206,7 @@ class _ListaProjetos extends StatelessWidget {
         children: const [
           Text(
             "Projetos",
-            style: TextStyle(
-              fontFamily: 'ABeeZee',
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
+            style: TextStyle(fontFamily: 'ABeeZee', fontSize: 16),
           ),
 
           SizedBox(height: 15),
@@ -272,11 +253,7 @@ class _ProjetoItem extends StatelessWidget {
         children: [
           Text(
             titulo,
-            style: const TextStyle(
-              fontFamily: 'ABeeZee',
-              fontWeight: FontWeight.w600,
-              fontSize: 14,
-            ),
+            style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 14),
           ),
 
           if (subtitulo != null && subtitulo!.isNotEmpty)
