@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/button.dart';
-<<<<<<< HEAD
-=======
 import 'package:gerenciamento_bolsistas/Widgets/Menu2.dart';
->>>>>>> 4b33880fb41e70838992a66e0a7d9935f2e1d6d9
 
 class Homepagebolsista extends StatelessWidget {
   const Homepagebolsista({super.key});
@@ -12,17 +9,6 @@ class Homepagebolsista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-      endDrawer: Drawer(
-        backgroundColor: const Color.fromARGB(255, 32, 191, 85),
-      ),
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            const Text(
-              "Olá,Bolsista",
-=======
       drawer: const Menu2(),
       appBar: AppBar(
         title: Row(
@@ -30,7 +16,6 @@ class Homepagebolsista extends StatelessWidget {
           children: const [
             Text(
               "Olá, Bolsista!",
->>>>>>> 4b33880fb41e70838992a66e0a7d9935f2e1d6d9
               style: TextStyle(fontFamily: 'ABeeZee', fontSize: 16),
             ),
           ],
@@ -41,44 +26,6 @@ class Homepagebolsista extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           height: double.infinity,
-<<<<<<< HEAD
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Button(
-                    text: 'Notificações',
-                    onPressed: () {},
-                    size: const Size(335, 46),
-                    color: cor1,
-                    icon: Image.asset(
-                      'assets/image/logo.png',
-                      width: 12,
-                      height: 12,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 140,
-                    width: 337,
-                    color: cor1,
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: const Text('Metas do projeto'),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-=======
           child: SingleChildScrollView(
             // Para permitir scroll se os cards crescerem
             child: Column(
@@ -392,14 +339,11 @@ class Homepagebolsista extends StatelessWidget {
                 const SizedBox(height: 40),
               ],
             ),
->>>>>>> 4b33880fb41e70838992a66e0a7d9935f2e1d6d9
           ),
         ),
       ),
     );
   }
-<<<<<<< HEAD
-=======
 
   // --- WIDGETS AUXILIARES ---
   // Função auxiliar para criar o Card com campo de texto (Registro de Presença)
@@ -536,5 +480,4 @@ class Homepagebolsista extends StatelessWidget {
       ),
     );
   }
->>>>>>> 4b33880fb41e70838992a66e0a7d9935f2e1d6d9
 }
