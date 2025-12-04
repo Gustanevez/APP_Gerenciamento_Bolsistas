@@ -2,8 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 
-class ProjetoMetasPage extends StatelessWidget {
-  const ProjetoMetasPage({super.key});
+class CadastrarProjetoPage extends StatefulWidget {
+  const CadastrarProjetoPage({super.key});
+
+  @override
+  State<CadastrarProjetoPage> createState() => _CadastrarProjetoPageState();
+}
+
+class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
+  final TextEditingController _titulo = TextEditingController();
+  final TextEditingController _area = TextEditingController();
+  final TextEditingController _dataInicio = TextEditingController();
+
+  @override
+  void dispose() {
+    _titulo.dispose();
+    _area.dispose();
+    _dataInicio.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +49,7 @@ class ProjetoMetasPage extends StatelessWidget {
 
               // TÍTULO PRINCIPAL
               const Text(
-                "Registro de Metas",
+                "Cadastrar Projeto",
                 style: TextStyle(
                   fontFamily: 'ABeeZee',
                   fontSize: 16,
@@ -43,44 +60,33 @@ class ProjetoMetasPage extends StatelessWidget {
 
               const SizedBox(height: 50),
 
-              // FORMULÁRIO (PADRONIZADO)
-              _campo("Selecione Projeto/Bolsista"),
+              // CAMPOS DE TEXTO PADRÃO
+              _campo("Título do Projeto", controller: _titulo),
               const SizedBox(height: 20),
 
-              _campo("Título da meta", hint: "Ex: Revisão Bibliográfica"),
+              _campo("Área", controller: _area),
               const SizedBox(height: 20),
 
               _campoComIcone(
-                "Data",
+                "Data de Início",
+                controller: _dataInicio,
                 icon: Icons.calendar_month,
-                hint: "Prazo: 20/11",
+                hint: "dd/mm/aaaa",
               ),
 
               const SizedBox(height: 300),
 
-              // BOTÕES PADRONIZADOS COM SEU BUTTON
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Buttonactions(
-                    text: "Salvar Metas",
-                    onPressed: () {},
-                    size: Size(MediaQuery.of(context).size.width * 0.37, 46),
-                    color: cor4,
-                  ),
-
-                  const SizedBox(width: 15),
-
-                  Buttonactions(
-                    text: "Limpar Campos",
-                    onPressed: () {},
-                    size: Size(MediaQuery.of(context).size.width * 0.37, 46),
-                    color: const Color.fromARGB(255, 137, 137, 137),
-                  ),
-                ],
+              // BOTÃO PADRÃO
+              Buttonactions(
+                text: "Salvar Projeto",
+                color: cor4,
+                size: Size(MediaQuery.of(context).size.width * 0.6, 46),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
             ],
           ),
         ),
@@ -88,14 +94,14 @@ class ProjetoMetasPage extends StatelessWidget {
     );
   }
 
-  // CAMPOS DE TEXTO
-  Widget _campo(String label, {String hint = ""}) {
+  // CAMPOS DE TEXTO PADRÃO
+  Widget _campo(String label, {required TextEditingController controller}) {
     return SizedBox(
       width: double.infinity,
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          hintText: hint,
           labelStyle: const TextStyle(fontFamily: 'ABeeZee', fontSize: 12),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         ),
@@ -105,12 +111,14 @@ class ProjetoMetasPage extends StatelessWidget {
 
   Widget _campoComIcone(
     String label, {
+    required TextEditingController controller,
     required IconData icon,
     String hint = "",
   }) {
     return SizedBox(
       width: double.infinity,
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           labelText: label,
           hintText: hint,
