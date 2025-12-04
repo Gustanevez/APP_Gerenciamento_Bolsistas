@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/relatorio.dart';
+import 'package:gerenciamento_bolsistas/Widgets/relatorio.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/button.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';

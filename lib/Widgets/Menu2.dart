@@ -4,7 +4,7 @@ import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
 import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/LoginSelect.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
-import 'package:gerenciamento_bolsistas/Screens/relatorio.dart';
+import 'package:gerenciamento_bolsistas/Widgets/relatorio.dart';
 
 class Menu2 extends StatelessWidget {
   const Menu2({super.key});

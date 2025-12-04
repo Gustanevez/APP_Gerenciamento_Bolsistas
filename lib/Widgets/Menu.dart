@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/LoginSelect.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
-import 'package:gerenciamento_bolsistas/Screens/relatorio.dart';
+import 'package:gerenciamento_bolsistas/Widgets/Relatorio.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
