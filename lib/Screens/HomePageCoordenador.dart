@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_bolsistas/Screens/relatorio.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/button.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
@@ -11,46 +12,46 @@ class Homepagecoordenador extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Menu(), 
+      drawer: const Menu(),
       appBar: AppBar(
-  automaticallyImplyLeading: false, // remove o ícone automático do Flutter
-  title: Row(
-    children: [
-      // Ícone do Menu (abre o Drawer)
-      Builder(
-        builder: (context) {
-          return IconButton(
-            icon: const Icon(Icons.menu, size: 28),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          );
-        },
-      ),
+        automaticallyImplyLeading:
+            false, // remove o ícone automático do Flutter
+        title: Row(
+          children: [
+            // Ícone do Menu (abre o Drawer)
+            Builder(
+              builder: (context) {
+                return IconButton(
+                  icon: const Icon(Icons.menu, size: 28),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                );
+              },
+            ),
 
-      const Spacer(), // empurra o texto para o centro
+            const Spacer(), // empurra o texto para o centro
 
-      const Text(
-        'Olá, Coordenador!',
-        style: TextStyle(
-          fontSize: 16,
-          fontFamily: 'ABeeZee',
-          color: Colors.black,
+            const Text(
+              'Olá, Coordenador!',
+              style: TextStyle(
+                fontSize: 16,
+                fontFamily: 'ABeeZee',
+                color: Colors.black,
+              ),
+            ),
+
+            const Spacer(), // empurra a seta para a direita
+            // Ícone de voltar (lado direito)
+            // IconButton(
+            //   icon: const Icon(Icons.arrow_back_ios_new, size: 22),
+            //   onPressed: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
+          ],
         ),
       ),
-
-      const Spacer(), // empurra a seta para a direita
-
-      // Ícone de voltar (lado direito)
-      // IconButton(
-      //   icon: const Icon(Icons.arrow_back_ios_new, size: 22),
-      //   onPressed: () {
-      //     Navigator.pop(context);
-      //   },
-      // ),
-    ],
-  ),
-),
 
       body: Padding(
         padding: const EdgeInsets.only(top: 40),
@@ -171,7 +172,14 @@ class Homepagecoordenador extends StatelessWidget {
 
               Button(
                 text: 'Relatórios',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RelatorioScreen(),
+                    ),
+                  );
+                },
                 size: Size(MediaQuery.of(context).size.width * 0.9, 46),
                 color: cor1,
                 icon: Image.asset(
