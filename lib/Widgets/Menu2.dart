@@ -1,12 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
 import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/LoginSelect.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
-import 'package:gerenciamento_bolsistas/Widgets/Relatorio.dart';
+import 'package:gerenciamento_bolsistas/Widgets/relatorio.dart';
 
-class Menu extends StatelessWidget {
-  const Menu({super.key});
+class Menu2 extends StatelessWidget {
+  const Menu2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,41 +54,14 @@ class Menu extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Homepagecoordenador(),
+                    builder: (context) => Homepagebolsista(),
                   ),
                 ); // Coloque aqui a lógica de navegação para a tela principal/home
               },
             ),
 
-            _menuItem(
-              iconPath: "assets/Image/listabolsistas.png",
-              text: "Lista de Bolsistas",
-              onTap: () {},
-            ),
-            _menuItem(
-              iconPath:
-                  "assets/Image/data-limite.png", // Usando 'data-limite.png'
-              text: "Projetos e Metas",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Registerproject()),
-                );
-              },
-            ),
-            _menuItem(
-              iconPath:
-                  "assets/Image/relatorio1.png", // Usando o 'Relatorio.png'
-              text: "Relatórios",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const RelatorioScreen(),
-                  ),
-                );
-              },
-            ),
+            
+            
             _menuItem(
               iconPath:
                   "assets/Image/data-limite.png", // Reutilizando para Agenda de Prazos
