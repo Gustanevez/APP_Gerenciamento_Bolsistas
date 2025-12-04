@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gerenciamento_bolsistas/Screens/relatorio.dart';
+
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/button.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
@@ -22,10 +20,10 @@ class Homepagecoordenador extends ConsumerWidget {
       drawer: const Menu(),
       appBar: AppBar(
         automaticallyImplyLeading:
-            false, // remove o ícone automático do Flutter
+            false, 
         title: Row(
           children: [
-            // Ícone do Menu (abre o Drawer)
+           
             Builder(
               builder: (context) {
                 return IconButton(
@@ -48,14 +46,7 @@ class Homepagecoordenador extends ConsumerWidget {
               ),
             ),
 
-            const Spacer(), // empurra a seta para a direita
-            // Ícone de voltar (lado direito)
-            // IconButton(
-            //   icon: const Icon(Icons.arrow_back_ios_new, size: 22),
-            //   onPressed: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
+            
           ],
         ),
       ),
@@ -103,39 +94,8 @@ class Homepagecoordenador extends ConsumerWidget {
 
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.3,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Button(
-                      text: 'teste',
-                      size: Size(
-                        MediaQuery.of(context).size.width * 0.3,
-                        (MediaQuery.of(context).size.height * 0.01),
-                      ),
-                    ),
-                    Button(
-                      text: 'teste:',
-                      size: Size(
-                        MediaQuery.of(context).size.width * 0.3,
-                        (MediaQuery.of(context).size.height * 0.01),
-                      ),
-                    ),
-                    Button(
-                      text: 'teste ${projetos.length}',
-                      size: Size(
-                        MediaQuery.of(context).size.width * 0.3,
-                        (MediaQuery.of(context).size.height * 0.01),
-                      ),
-                    ),
-                    Button(
-                      text: 'teste',
-                      size: Size(
-                        MediaQuery.of(context).size.width * 0.3,
-                        (MediaQuery.of(context).size.height * 0.01),
-                      ),
-                    ),
-                  ],
-                ),
+                child: Cardhomecoordenador(),
+
               ),
 
               SizedBox(height: 20),
