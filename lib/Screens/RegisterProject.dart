@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Screens/CadastrarProjeto.dart';
 import 'package:gerenciamento_bolsistas/Screens/RegistroMetas.dart';
+import 'package:gerenciamento_bolsistas/Screens/NeuroCodePage.dart';
+import 'package:gerenciamento_bolsistas/Screens/EcoTestPage.dart';
+import 'package:gerenciamento_bolsistas/Screens/GeoMentePage.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 
@@ -19,43 +22,35 @@ class Registerproject extends StatelessWidget {
           ),
         ),
       ),
-
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           children: [
             _ListaMetas(),
             const SizedBox(height: 20),
-
             Buttonactions(
               text: "Registrar Metas",
               size: Size(MediaQuery.of(context).size.width * 0.7, 46),
               color: cor4,
               onPressed: () {
-                Navigator.push(
-                  context,
+                Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const ProjetoMetasPage()),
                 );
               },
             ),
-
             const SizedBox(height: 25),
-
             _ListaProjetos(),
             const SizedBox(height: 25),
-
             Buttonactions(
               text: "Cadastrar Projetos",
               size: Size(MediaQuery.of(context).size.width * 0.7, 46),
               color: cor4,
               onPressed: () {
-                Navigator.push(
-                  context,
+                Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => CadastrarProjetoPage()),
                 );
               },
             ),
-
             const SizedBox(height: 20),
           ],
         ),
@@ -80,9 +75,7 @@ class _ListaMetas extends StatelessWidget {
             "Metas",
             style: TextStyle(fontFamily: 'ABeeZee', fontSize: 16),
           ),
-
           const SizedBox(height: 15),
-
           const _MetaItem(
             numero: "1.",
             titulo: "Concluir Revisão Bibliográfica",
@@ -92,7 +85,6 @@ class _ListaMetas extends StatelessWidget {
             iconStatus: Icons.refresh,
           ),
           const SizedBox(height: 20),
-
           const _MetaItem(
             numero: "2.",
             titulo: "Enviar Relatório e Frequência",
@@ -143,9 +135,7 @@ class _MetaItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(numero, style: const TextStyle(fontFamily: 'ABeeZee')),
-
           const SizedBox(width: 10),
-
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,12 +145,10 @@ class _MetaItem extends StatelessWidget {
                   style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 14),
                 ),
                 const SizedBox(height: 4),
-
                 Text(
                   "Prazo: $prazo",
                   style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 12),
                 ),
-
                 Row(
                   children: [
                     Text(
@@ -178,7 +166,6 @@ class _MetaItem extends StatelessWidget {
               ],
             ),
           ),
-
           Column(
             children: const [
               Icon(Icons.edit, color: Colors.black54),
@@ -203,21 +190,23 @@ class _ListaProjetos extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
+        children: [
+          const Text(
             "Projetos",
             style: TextStyle(fontFamily: 'ABeeZee', fontSize: 16),
           ),
-
-          SizedBox(height: 15),
-
-          _ProjetoItem(titulo: "1. Neuro Code"),
-          SizedBox(height: 12),
-
-          _ProjetoItem(titulo: "2. EcoTest"),
-          SizedBox(height: 12),
-
-          _ProjetoItem(titulo: "3. GeoMente"),
+          const SizedBox(height: 15),
+          _ProjetoItem(
+            titulo: "1. Neuro Code",
+            pageDestino: const NeuroCodePage(),
+          ),
+          const SizedBox(height: 12),
+          _ProjetoItem(titulo: "2. EcoTest", pageDestino: const EcoTestPage()),
+          const SizedBox(height: 12),
+          _ProjetoItem(
+            titulo: "3. GeoMente",
+            pageDestino: const GeoMentePage(),
+          ),
         ],
       ),
     );
@@ -226,51 +215,46 @@ class _ListaProjetos extends StatelessWidget {
 
 class _ProjetoItem extends StatelessWidget {
   final String titulo;
-  final String? subtitulo;
+  final Widget pageDestino;
 
-  const _ProjetoItem({required this.titulo, this.subtitulo});
+  const _ProjetoItem({required this.titulo, required this.pageDestino});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.08),
-            blurRadius: 6,
-            offset: const Offset(1, 1),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            titulo,
-            style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 14),
-          ),
-
-          if (subtitulo != null && subtitulo!.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(
-                subtitulo!,
-                style: const TextStyle(
-                  fontFamily: 'ABeeZee',
-                  fontSize: 12,
-                  color: Colors.black54,
-                ),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
+    // Material provides the visual surface; GestureDetector captures the tap.
+    return Material(
+      color: Colors.transparent,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          debugPrint('Clicou no projeto: $titulo');
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (_) => pageDestino));
+        },
+        child: Container(
+          height: 70,
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(18),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08),
+                blurRadius: 6,
+                offset: const Offset(1, 1),
               ),
+            ],
+          ),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              titulo,
+              style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 14),
             ),
-        ],
+          ),
+        ),
       ),
     );
   }
