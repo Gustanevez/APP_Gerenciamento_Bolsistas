@@ -5,7 +5,9 @@ import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/LoginSelect.dart';
 
 void main() {
-  runApp(ProviderScope(child: Myapp()));
+  runApp(ProviderScope(child: Myapp()
+    )
+  );
 }
 
 class Myapp extends StatelessWidget {
