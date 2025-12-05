@@ -15,7 +15,7 @@ class ProjetoMetasPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // TEXTO SUPERIOR
+              
               Align(
                 alignment: Alignment.centerRight,
                 child: const Text(
@@ -30,7 +30,7 @@ class ProjetoMetasPage extends StatelessWidget {
 
               const SizedBox(height: 65),
 
-              // TÍTULO PRINCIPAL
+            
               const Text(
                 "Registro de Metas",
                 style: TextStyle(
@@ -42,7 +42,7 @@ class ProjetoMetasPage extends StatelessWidget {
 
               const SizedBox(height: 50),
 
-              // FORMULÁRIO
+           
               _campo("Selecione Projeto/Bolsista"),
               const SizedBox(height: 20),
 
@@ -57,7 +57,7 @@ class ProjetoMetasPage extends StatelessWidget {
 
               const SizedBox(height: 300),
 
-              // BOTÕES
+         
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -87,7 +87,6 @@ class ProjetoMetasPage extends StatelessWidget {
     );
   }
 
-  // CAMPOS DE TEXTO
   Widget _campo(String label, {String hint = ""}) {
     return SizedBox(
       width: double.infinity,

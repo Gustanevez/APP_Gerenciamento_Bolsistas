@@ -221,7 +221,7 @@ class _ProjetoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Material provides the visual surface; GestureDetector captures the tap.
+    
     return Material(
       color: Colors.transparent,
       child: GestureDetector(

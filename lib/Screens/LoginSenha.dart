@@ -3,7 +3,7 @@ import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
 import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 
 class LoginSenha extends StatefulWidget {
-  final String tipoUsuario; // "coordenador" ou "bolsista"
+  final String tipoUsuario; 
 
   const LoginSenha({super.key, required this.tipoUsuario});
 
@@ -22,7 +22,7 @@ class _LoginSenhaState extends State<LoginSenha> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // ---- IMAGEM DO TOPO ----
+             
               Image.asset(
                 'assets/Image/topo.png',
                 width: MediaQuery.of(context).size.width,
@@ -31,7 +31,7 @@ class _LoginSenhaState extends State<LoginSenha> {
 
               const SizedBox(height: 0),
 
-              // ---- FORMULÁRIO ----
+             
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Form(
@@ -75,7 +75,7 @@ class _LoginSenhaState extends State<LoginSenha> {
 
                       const SizedBox(height: 10),
 
-                      // ---- BOTÃO ENTRAR ----
+                     
                       ElevatedButton(
                         onPressed: _entrar,
                         style: ElevatedButton.styleFrom(
@@ -100,7 +100,7 @@ class _LoginSenhaState extends State<LoginSenha> {
                       const Center(child: Text("Ou continue com")),
                       const SizedBox(height: 15),
 
-                      // ---- BOTÕES SOCIAIS ----
+                     
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -111,7 +111,7 @@ class _LoginSenhaState extends State<LoginSenha> {
 
                       const SizedBox(height: 25),
 
-                      // ---- CRIAR CONTA ----
+                    
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -121,7 +121,7 @@ class _LoginSenhaState extends State<LoginSenha> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              // 👉 aqui você coloca a navegação para criar conta
+                         
                             },
                             child: const Text(
                               "Crie agora",
@@ -147,9 +147,7 @@ class _LoginSenhaState extends State<LoginSenha> {
     );
   }
 
-  // ------------------------
-  // FUNÇÃO DO BOTÃO ENTRAR
-  // ------------------------
+ 
   void _entrar() {
     if (widget.tipoUsuario == "coordenador") {
       Navigator.pushReplacement(
@@ -164,11 +162,7 @@ class _LoginSenhaState extends State<LoginSenha> {
     }
   }
 
-  // ------------------------
-  // COMPONENTES DO LAYOUT
-  // ------------------------
-
-  /// Botão social com ícone
+ 
   Widget _socialButton(String imagePath) {
     return Container(
       width: 100,
@@ -182,7 +176,7 @@ class _LoginSenhaState extends State<LoginSenha> {
     );
   }
 
-  /// Campo Email
+
   Widget _buildEmailField() {
     return TextFormField(
       decoration: InputDecoration(
@@ -202,7 +196,7 @@ class _LoginSenhaState extends State<LoginSenha> {
     );
   }
 
-  /// Campo Senha
+
   Widget _buildPasswordField() {
     return TextFormField(
       obscureText: true,

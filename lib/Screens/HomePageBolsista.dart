@@ -27,10 +27,10 @@ class Homepagebolsista extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           child: SingleChildScrollView(
-            // Para permitir scroll se os cards crescerem
+            
             child: Column(
               children: [
-                // --- Botão de Notificações ---
+             
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,8 +51,7 @@ class Homepagebolsista extends StatelessWidget {
 
                 const SizedBox(height: 40),
 
-                // --- Card de Metas do Projeto ---
-                // --- Card de Metas e Prazos do Projeto ---
+                -
                 Container(
                   width: 337,
                   padding: const EdgeInsets.all(16),
@@ -72,7 +71,7 @@ class Homepagebolsista extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      // --- ITEM 1 ---
+                     
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -114,14 +113,14 @@ class Homepagebolsista extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      // Linha divisória
+                      
                       Container(
                         height: 1,
                         color: Colors.black26,
                         margin: const EdgeInsets.symmetric(vertical: 8),
                       ),
 
-                      // --- ITEM 2 ---
+                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -166,13 +165,12 @@ class Homepagebolsista extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                // --- Novo Card de Registro de Presença ---
+                
                 _buildRegistrationCard(title: 'Registro de Presença'),
 
                 const SizedBox(height: 20),
 
-                // --- Card de Metas do Projeto ---
-                // --- CARD STATUS DE RELATÓRIOS E FREQUÊNCIAS ---
+                
                 Container(
                   width: 337,
                   padding: const EdgeInsets.all(16),
@@ -192,7 +190,7 @@ class Homepagebolsista extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      // -------- ITEM 1 --------
+                     
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -229,7 +227,7 @@ class Homepagebolsista extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      // -------- ITEM 2 --------
+                      
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -266,7 +264,7 @@ class Homepagebolsista extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      // -------- ITEM 3 --------
+                      
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -303,7 +301,7 @@ class Homepagebolsista extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      // -------- ITEM 4 --------
+                      
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -345,19 +343,16 @@ class Homepagebolsista extends StatelessWidget {
     );
   }
 
-  // --- WIDGETS AUXILIARES ---
-  // Função auxiliar para criar o Card com campo de texto (Registro de Presença)
-  // Função auxiliar para criar o Card de Registro de Presença com campo de input
   Widget _buildRegistrationCard({required String title}) {
     return Container(
       width: 337,
       margin: const EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white, // fundo branco do card
+        color: Colors.white, 
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
-          color: const Color.fromARGB(255, 83, 83, 83), // borda preta
+          color: const Color.fromARGB(255, 83, 83, 83), 
           width: 1,
         ),
         boxShadow: [
@@ -367,7 +362,7 @@ class Homepagebolsista extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Título do card
+          
           Text(
             title,
             style: const TextStyle(
@@ -378,7 +373,7 @@ class Homepagebolsista extends StatelessWidget {
           ),
           const SizedBox(height: 8),
 
-          // Exemplo do que pode escrever (texto pequeno abaixo do título)
+          
           const Text(
             'Ex.: Data, local e outras observações de presença',
             style: TextStyle(
@@ -390,11 +385,10 @@ class Homepagebolsista extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          // Campo de texto
           TextFormField(
             maxLines: 4,
             decoration: InputDecoration(
-              hintText: 'Digite aqui...', // exemplo dentro do campo
+              hintText: 'Digite aqui...', 
               border: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: const Color.fromARGB(255, 85, 85, 85),

@@ -19,10 +19,10 @@
         drawer: const Menu(),
         appBar: AppBar(
           automaticallyImplyLeading:
-              false, // remove o ícone automático do Flutter
+              false, 
           title: Row(
             children: [
-              // Ícone do Menu (abre o Drawer)
+          
               Builder(
                 builder: (context) {
                   return IconButton(
@@ -34,7 +34,7 @@
                 },
               ),
 
-              const Spacer(), // empurra o texto para o centro
+              const Spacer(), 
 
               const Text(
                 'Olá, Coordenador!',
@@ -45,14 +45,8 @@
                 ),
               ),
 
-              const Spacer(), // empurra a seta para a direita
-              // Ícone de voltar (lado direito)
-              // IconButton(
-              //   icon: const Icon(Icons.arrow_back_ios_new, size: 22),
-              //   onPressed: () {
-              //     Navigator.pop(context);
-              //   },
-              // ),
+              const Spacer(), 
+            
             ],
           ),
         ),
@@ -73,9 +67,9 @@
                   color: cor1,
                   icon: Image.asset(
                     'assets/Image/notificacao.png',
-                    color: Colors.black, // Propriedade do Image
-                    width: 26, // Propriedade do Image
-                    height: 26, // Propriedade do Image
+                    color: Colors.black, 
+                    width: 26, 
+                    height: 26, 
                   ),
                 ),
 
@@ -104,45 +98,44 @@
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     children: [
-                      // [Linhas 49 - 65] Substitua o bloco inteiro do primeiro Button() pelo código abaixo
-                      // e repita a estrutura para os outros cards, mudando apenas os dados.
+                      
                       InkWell(
                         onTap: () {
-                          // Ação ao clicar no card (ex: Navigator.push para a lista de bolsistas)
+                          
                         },
                         child: Container(
-                          // 💡 DEFINIÇÕES DO CARD
+                          
                           width: MediaQuery.of(context).size.width * 0.35,
                           height:
-                              double.infinity, // Preenche a altura do SizedBox
+                              double.infinity, 
                           margin: const EdgeInsets.only(right: 15),
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: cor1,
                             borderRadius: BorderRadius.circular(
                               20,
-                            ), // Cantos arredondados
+                            ), 
                           ),
 
-                          // 💡 LAYOUT INTERNO (Vertical)
+                          
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // 1. ÍCONE NO TOPO
+                              
                               Image.asset(
                                 'assets/Image/pessoas.png',
                                 width: 40,
                                 height: 40,
-                                color: Colors.black, // Cor preta para o ícone
+                                color: Colors.black, 
                               ),
 
-                              // 2. NOME E CONTADOR (Agrupados)
+                              
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Bolsistas Ativos', // NOME
+                                    'Bolsistas Ativos', 
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.black,
@@ -150,7 +143,7 @@
                                   ),
 
                                   Text(
-                                    // CONTADOR (Número Grande)
+                                   
                                     (projetos.length +0 ).toString(),
                                     style: const TextStyle(
                                       fontSize: 32,
@@ -161,7 +154,7 @@
                                 ],
                               ),
 
-                              // 3. ÍCONE DE ADICIONAR (+) no canto inferior direito
+                             
                               const Align(
                                 alignment: Alignment.bottomRight,
                                 child: Icon(
@@ -175,45 +168,44 @@
                         ),
                       ),
 
-                      // [Linhas 49 - 65] Substitua o bloco inteiro do primeiro Button() pelo código abaixo
-                      // e repita a estrutura para os outros cards, mudando apenas os dados.
+                      
                       InkWell(
                         onTap: () {
-                          // Ação ao clicar no card (ex: Navigator.push para a lista de bolsistas)
+                          
                         },
                         child: Container(
-                          // 💡 DEFINIÇÕES DO CARD
+                         
                           width: MediaQuery.of(context).size.width * 0.35,
                           height:
-                              double.infinity, // Preenche a altura do SizedBox
+                              double.infinity,
                           margin: const EdgeInsets.only(right: 15),
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: cor1,
                             borderRadius: BorderRadius.circular(
                               20,
-                            ), // Cantos arredondados
+                            ), 
                           ),
 
-                          // 💡 LAYOUT INTERNO (Vertical)
+                          
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // 1. ÍCONE NO TOPO
+                            
                               Image.asset(
                                 'assets/Image/e.png',
                                 width: 40,
                                 height: 40,
-                                color: Colors.black, // Cor preta para o ícone
+                                color: Colors.black,
                               ),
 
-                              // 2. NOME E CONTADOR (Agrupados)
+                              
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Projetos', // NOME
+                                    'Projetos', 
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.black,
@@ -231,7 +223,7 @@
                                 ],
                               ),
 
-                              // 3. ÍCONE DE ADICIONAR (+) no canto inferior direito
+                             
                               const Align(
                                 alignment: Alignment.bottomRight,
                                 child: Icon(
@@ -245,45 +237,44 @@
                         ),
                       ),
 
-                      // [Linhas 49 - 65] Substitua o bloco inteiro do primeiro Button() pelo código abaixo
-                      // e repita a estrutura para os outros cards, mudando apenas os dados.
+                      
                       InkWell(
                         onTap: () {
-                          // Ação ao clicar no card (ex: Navigator.push para a lista de bolsistas)
+                         
                         },
                         child: Container(
-                          // 💡 DEFINIÇÕES DO CARD
+                     
                           width: MediaQuery.of(context).size.width * 0.35,
                           height:
-                              double.infinity, // Preenche a altura do SizedBox
+                              double.infinity, 
                           margin: const EdgeInsets.only(right: 15),
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: cor1,
                             borderRadius: BorderRadius.circular(
                               20,
-                            ), // Cantos arredondados
+                            ), 
                           ),
 
-                          // 💡 LAYOUT INTERNO (Vertical)
+                          
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // 1. ÍCONE NO TOPO
+                              
                               Image.asset(
                                 'assets/Image/relogio.png',
                                 width: 40,
                                 height: 40,
-                                color: Colors.black, // Cor preta para o ícone
+                                color: Colors.black, 
                               ),
 
-                              // 2. NOME E CONTADOR (Agrupados)
+                              
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Tempo de laboratório', // NOME
+                                    'Tempo de laboratório', 
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.black,
@@ -291,7 +282,7 @@
                                   ),
 
                                   Text(
-                                    // CONTADOR (Número Grande)
+                                    
                                     (projetos.length + 0).toString(),
                                     style: const TextStyle(
                                       fontSize: 32,
@@ -302,7 +293,7 @@
                                 ],
                               ),
 
-                              // 3. ÍCONE DE ADICIONAR (+) no canto inferior direito
+                              
                               const Align(
                                 alignment: Alignment.bottomRight,
                                 child: Icon(

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-// --- WIDGET PRINCIPAL ---
-
 class CadastroBolsistaScreen extends StatelessWidget {
   const CadastroBolsistaScreen({super.key});
 
-  // Widget auxiliar para criar os campos de entrada de texto padronizados
+  
   Widget _buildTextField(String label, {TextInputType type = TextInputType.text}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -13,7 +11,7 @@ class CadastroBolsistaScreen extends StatelessWidget {
         keyboardType: type,
         decoration: InputDecoration(
           labelText: label,
-          // Estilo arredondado (como no Figma)
+          
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: Colors.grey.shade400),
@@ -28,7 +26,7 @@ class CadastroBolsistaScreen extends StatelessWidget {
           ),
           contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
           filled: true,
-          fillColor: Colors.white, // Fundo branco dentro do campo
+          fillColor: Colors.white, 
         ),
       ),
     );
@@ -36,10 +34,8 @@ class CadastroBolsistaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Definindo cores suaves para o fundo (ajuste conforme o seu Style/colors.dart)
-    const Color corFundo = Color(0xFFF0F4F7); 
-    const Color corPrimaria = Color(0xFF4CAF50); // Verde para o botão de ação
-
+        const Color corFundo = Color(0xFFF0F4F7); 
+    const Color corPrimaria = Color(0xFF4CAF50); 
     return Scaffold(
       backgroundColor: corFundo,
       appBar: AppBar(
@@ -60,21 +56,21 @@ class CadastroBolsistaScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            // --- FORMULÁRIO ---
+        
             Form(
               child: Column(
                 children: [
-                  // CAMPO 1: Nome
+                  
                   const SizedBox(height: 40),
                   _buildTextField('Nome'),
                   
-                  // CAMPO 2: Email
+                  
                   const SizedBox(height: 20),
                   _buildTextField('Email', type: TextInputType.emailAddress),
 
                   const SizedBox(height: 20),
                   
-                  // CAMPO 3: Selecione Projeto (Dropdown)
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     
@@ -101,19 +97,19 @@ class CadastroBolsistaScreen extends StatelessWidget {
                               ))
                           .toList(),
                       onChanged: (value) {
-                        // Lógica para salvar o valor do projeto
+                        
                       },
                     ),
                   ),
 
-                  // --- Você pode adicionar mais campos aqui (CPF, Carga Horária, etc.) ---
+                  
                   
                   const SizedBox(height: 100),
                   
-                  // --- BOTÃO CADASTRAR BOLSISTA ---
+                  
                   ElevatedButton(
                     onPressed: () {
-                      // Lógica para submeter o formulário
+                      
                       
                       print('Cadastrar Bolsista!');
                     },

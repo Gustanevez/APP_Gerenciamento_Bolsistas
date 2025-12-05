@@ -27,7 +27,7 @@ class EcoTestPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Top bar
+              
               Row(
                 children: [
                   IconButton(
@@ -46,7 +46,7 @@ class EcoTestPage extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              // Card bolsista
+              
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -92,7 +92,7 @@ class EcoTestPage extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // Card principal
+              
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -116,7 +116,7 @@ class EcoTestPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
 
-                    // Área de Pesquisa
+                    
                     const Text(
                       "Área de Pesquisa",
                       style: TextStyle(
@@ -131,7 +131,7 @@ class EcoTestPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 14),
 
-                    // Orientador
+                    
                     const Text(
                       "Orientador(a)",
                       style: TextStyle(
@@ -146,7 +146,7 @@ class EcoTestPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 14),
 
-                    // Bolsistas
+                    
                     const Text(
                       "Bolsistas",
                       style: TextStyle(
@@ -181,7 +181,7 @@ class EcoTestPage extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // Cronograma
+                    
                     const Text(
                       "Cronograma",
                       style: TextStyle(

@@ -20,7 +20,7 @@ class BolsistasScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Barra de busca e botão
+              
               Row(
                 children: [
                   Expanded(
@@ -73,7 +73,7 @@ class BolsistasScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // Tabela de bolsistas
+              
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -186,7 +186,7 @@ class BolsistasScreen extends StatelessWidget {
   }
 }
 
-// Cabeçalho da tabela alinhado com flex
+
 Widget _buildHeaderRow() {
   return Row(
     children: const [
@@ -217,7 +217,7 @@ Widget _buildHeaderRow() {
   );
 }
 
-// Linha de dados alinhada
+
 Widget _buildDataRow(String n, String c, String m, String o, String s) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 6),
@@ -233,7 +233,7 @@ Widget _buildDataRow(String n, String c, String m, String o, String s) {
   );
 }
 
-// Cards de projeto
+
 Widget _buildProjeto(String nome, String desc, String img) {
   return Container(
     margin: const EdgeInsets.only(bottom: 12),

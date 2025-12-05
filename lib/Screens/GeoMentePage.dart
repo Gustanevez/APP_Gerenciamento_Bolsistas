@@ -46,7 +46,7 @@ class GeoMentePage extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              // Card bolsista
+              
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -92,7 +92,7 @@ class GeoMentePage extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // Card principal
+              
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
