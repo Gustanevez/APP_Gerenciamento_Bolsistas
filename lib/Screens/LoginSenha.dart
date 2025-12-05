@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
-import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
+import 'package:gerenciamento_bolsistas/Screens/homePageBolsista.dart';
+import 'package:gerenciamento_bolsistas/Screens/homePageCoordenador.dart';
 
 class LoginSenha extends StatefulWidget {
   final String tipoUsuario; 

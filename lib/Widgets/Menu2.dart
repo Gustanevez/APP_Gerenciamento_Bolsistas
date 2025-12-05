@@ -1,10 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
-import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
-import 'package:gerenciamento_bolsistas/Screens/LoginSelect.dart';
-import 'package:gerenciamento_bolsistas/Screens/RegisterProject.dart';
-import 'package:gerenciamento_bolsistas/Widgets/relatorio.dart';
+import 'package:gerenciamento_bolsistas/Screens/homePageBolsista.dart';
+import 'package:gerenciamento_bolsistas/Screens/loginSelect.dart';
+
 
 class Menu2 extends StatelessWidget {
   const Menu2({super.key});

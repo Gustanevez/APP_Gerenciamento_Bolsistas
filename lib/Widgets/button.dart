@@ -26,7 +26,7 @@ class Button extends StatelessWidget{
         ),
         fixedSize: size != null? WidgetStateProperty.all<Size>(size!)
         :null,
-   ),
+   ), 
    child: Row(
     mainAxisAlignment: MainAxisAlignment.start ,
     children: [

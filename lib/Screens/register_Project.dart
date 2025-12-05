@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/CadastrarProjeto.dart';
-import 'package:gerenciamento_bolsistas/Screens/RegistroMetas.dart';
-import 'package:gerenciamento_bolsistas/Screens/NeuroCodePage.dart';
-import 'package:gerenciamento_bolsistas/Screens/EcoTestPage.dart';
-import 'package:gerenciamento_bolsistas/Screens/GeoMentePage.dart';
+import 'package:gerenciamento_bolsistas/Screens/cadastrarProjeto.dart';
+import 'package:gerenciamento_bolsistas/Screens/registro_Metas.dart';
+import 'package:gerenciamento_bolsistas/Screens/neuro_code_Page.dart';
+import 'package:gerenciamento_bolsistas/Screens/ecoTestPage.dart';
+import 'package:gerenciamento_bolsistas/Screens/geoMentePage.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 

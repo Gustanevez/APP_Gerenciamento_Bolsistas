@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
-import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
 import 'package:gerenciamento_bolsistas/Screens/LoginSenha.dart';
 
 enum Character {coordenador,bolsista}

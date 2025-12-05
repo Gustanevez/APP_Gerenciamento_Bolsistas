@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/CadastrarProjeto.dart';
 import 'package:gerenciamento_bolsistas/Screens/bolsista.dart';
 
 class BolsistasScreen extends StatelessWidget {
@@ -75,13 +74,13 @@ class BolsistasScreen extends StatelessWidget {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(
-                  headingRowColor: MaterialStateProperty.all(
+                  headingRowColor: WidgetStateProperty.all(
                     const Color(0xFFBEE8B3),
                   ),
-                  dataRowColor: MaterialStateProperty.resolveWith<Color?>((
-                    Set<MaterialState> states,
+                  dataRowColor: WidgetStateProperty.resolveWith<Color?>((
+                    Set<WidgetState> states,
                   ) {
-                    if (states.contains(MaterialState.selected)) {
+                    if (states.contains(WidgetState.selected)) {
                       return Colors.green.shade100;
                     }
                     return null;
@@ -95,7 +94,7 @@ class BolsistasScreen extends StatelessWidget {
                   rows: List<DataRow>.generate(bolsistas.length, (index) {
                     final bolsista = bolsistas[index];
                     return DataRow(
-                      color: MaterialStateProperty.all(
+                      color: WidgetStateProperty.all(
                         index.isEven ? const Color(0xFFDFF7E3) : Colors.white,
                       ),
                       cells: [

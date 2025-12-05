@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gerenciamento_bolsistas/Screens/HomePageBolsista.dart';
-import 'package:gerenciamento_bolsistas/Screens/HomePageCoordenador.dart';
-import 'package:gerenciamento_bolsistas/Screens/LoginSelect.dart';
+import 'package:gerenciamento_bolsistas/Screens/loginSelect.dart';
 
 void main() {
   runApp(ProviderScope(child: Myapp()
