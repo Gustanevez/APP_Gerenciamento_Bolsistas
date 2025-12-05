@@ -51,7 +51,7 @@ class Homepagebolsista extends StatelessWidget {
 
                 const SizedBox(height: 40),
 
-                -
+                
                 Container(
                   width: 337,
                   padding: const EdgeInsets.all(16),

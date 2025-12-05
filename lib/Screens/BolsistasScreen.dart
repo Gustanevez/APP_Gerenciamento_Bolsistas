@@ -20,7 +20,6 @@ class BolsistasScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               Row(
                 children: [
                   Expanded(
@@ -38,7 +37,7 @@ class BolsistasScreen extends StatelessWidget {
                           Expanded(
                             child: TextField(
                               decoration: InputDecoration(
-                                hintText: "Filtrar por nome, projeto...",
+                                hintText: "Filtrar por nome...",
                                 border: InputBorder.none,
                               ),
                             ),
@@ -73,110 +72,41 @@ class BolsistasScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFE3F7DA),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  children: [
-                    _buildHeaderRow(),
-                    const SizedBox(height: 4),
-                    _buildDataRow(
-                      "Wilma Santos",
-                      "C.C",
-                      "10188",
-                      "Jose",
-                      "Ativo",
-                    ),
-                    _buildDataRow(
-                      "Avila Conce",
-                      "C.A",
-                      "11178",
-                      "Rafael",
-                      "Ativo",
-                    ),
-                    _buildDataRow(
-                      "Lara Silva",
-                      "MAT",
-                      "12024",
-                      "Maria",
-                      "Ativo",
-                    ),
-                    _buildDataRow(
-                      "Jonas Davi",
-                      "C.C",
-                      "10188",
-                      "Cláudio",
-                      "Inativo",
-                    ),
-                    _buildDataRow(
-                      "Debriane S.",
-                      "C.A",
-                      "11428",
-                      "Jose",
-                      "Inativo",
-                    ),
-                    _buildDataRow(
-                      "Cassios Matos",
-                      "C.C",
-                      "11726",
-                      "Maria",
-                      "Ativo",
-                    ),
-                    _buildDataRow(
-                      "Silvane Santos",
-                      "MAT",
-                      "12658",
-                      "Rafael",
-                      "Ativo",
-                    ),
-                    _buildDataRow(
-                      "Juliana Costa",
-                      "MAT",
-                      "12782",
-                      "Cláudio",
-                      "Inativo",
-                    ),
-                    _buildDataRow(
-                      "Wills Antonio",
-                      "C.C",
-                      "17452",
-                      "Cláudio",
-                      "Ativo",
-                    ),
-                    const SizedBox(height: 8),
-                    const Icon(Icons.keyboard_arrow_down, size: 28),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                  headingRowColor: MaterialStateProperty.all(
+                    const Color(0xFFBEE8B3),
+                  ),
+                  dataRowColor: MaterialStateProperty.resolveWith<Color?>((
+                    Set<MaterialState> states,
+                  ) {
+                    if (states.contains(MaterialState.selected)) {
+                      return Colors.green.shade100;
+                    }
+                    return null;
+                  }),
+                  columns: const [
+                    DataColumn(label: Text('Nome')),
+                    DataColumn(label: Text('Matrícula')),
+                    DataColumn(label: Text('Orientador')),
+                    DataColumn(label: Text('Status')),
                   ],
+                  rows: List<DataRow>.generate(bolsistas.length, (index) {
+                    final bolsista = bolsistas[index];
+                    return DataRow(
+                      color: MaterialStateProperty.all(
+                        index.isEven ? const Color(0xFFDFF7E3) : Colors.white,
+                      ),
+                      cells: [
+                        DataCell(Text(bolsista['nome']!)),
+                        DataCell(Text(bolsista['matricula']!)),
+                        DataCell(Text(bolsista['orientador']!)),
+                        DataCell(Text(bolsista['status']!)),
+                      ],
+                    );
+                  }),
                 ),
-              ),
-
-              const SizedBox(height: 20),
-
-              const Center(
-                child: Text(
-                  "Projetos",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              _buildProjeto(
-                "EcoTest",
-                "Inovação em alimentos sustentáveis e com menor impacto ambiental.",
-                "assets/perfil1.png",
-              ),
-              _buildProjeto(
-                "GeoMente",
-                "Abordagem criativa de conceitos geométricos no raciocínio visual.",
-                "assets/perfil2.png",
-              ),
-              _buildProjeto(
-                "NeuroCode",
-                "Plataforma que une programação e modelos inspirados no cérebro.",
-                "assets/perfil3.png",
               ),
             ],
           ),
@@ -186,77 +116,59 @@ class BolsistasScreen extends StatelessWidget {
   }
 }
 
-
-Widget _buildHeaderRow() {
-  return Row(
-    children: const [
-      Expanded(
-        flex: 2,
-        child: Text("Nome", style: TextStyle(fontWeight: FontWeight.bold)),
-      ),
-      Expanded(
-        flex: 1,
-        child: Text("Curso", style: TextStyle(fontWeight: FontWeight.bold)),
-      ),
-      Expanded(
-        flex: 1,
-        child: Text("Matrícula", style: TextStyle(fontWeight: FontWeight.bold)),
-      ),
-      Expanded(
-        flex: 2,
-        child: Text(
-          "Orientador",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Text("Status", style: TextStyle(fontWeight: FontWeight.bold)),
-      ),
-    ],
-  );
-}
-
-
-Widget _buildDataRow(String n, String c, String m, String o, String s) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 6),
-    child: Row(
-      children: [
-        Expanded(flex: 2, child: Text(n)),
-        Expanded(flex: 1, child: Text(c)),
-        Expanded(flex: 1, child: Text(m)),
-        Expanded(flex: 2, child: Text(o)),
-        Expanded(flex: 1, child: Text(s)),
-      ],
-    ),
-  );
-}
-
-
-Widget _buildProjeto(String nome, String desc, String img) {
-  return Container(
-    margin: const EdgeInsets.only(bottom: 12),
-    padding: const EdgeInsets.all(12),
-    decoration: BoxDecoration(
-      color: const Color(0xFFE3F7DA),
-      borderRadius: BorderRadius.circular(20),
-    ),
-    child: Row(
-      children: [
-        CircleAvatar(radius: 25, backgroundImage: AssetImage(img)),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(nome, style: const TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 4),
-              Text(desc, style: const TextStyle(fontSize: 12)),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
+final List<Map<String, String>> bolsistas = [
+  {
+    'nome': 'Wilma Santos',
+    'matricula': '10188',
+    'orientador': 'Jose',
+    'status': 'Ativo',
+  },
+  {
+    'nome': 'Avila Conce',
+    'matricula': '11178',
+    'orientador': 'Rafael',
+    'status': 'Ativo',
+  },
+  {
+    'nome': 'Lara Silva',
+    'matricula': '12024',
+    'orientador': 'Maria',
+    'status': 'Ativo',
+  },
+  {
+    'nome': 'Jonas Davi',
+    'matricula': '10188',
+    'orientador': 'Cláudio',
+    'status': 'Inativo',
+  },
+  {
+    'nome': 'Debriane S.',
+    'matricula': '11428',
+    'orientador': 'Jose',
+    'status': 'Inativo',
+  },
+  {
+    'nome': 'Cassios Matos',
+    'matricula': '11726',
+    'orientador': 'Maria',
+    'status': 'Ativo',
+  },
+  {
+    'nome': 'Silvane Santos',
+    'matricula': '12658',
+    'orientador': 'Rafael',
+    'status': 'Ativo',
+  },
+  {
+    'nome': 'Juliana Costa',
+    'matricula': '12782',
+    'orientador': 'Cláudio',
+    'status': 'Inativo',
+  },
+  {
+    'nome': 'Wills Antonio',
+    'matricula': '17452',
+    'orientador': 'Cláudio',
+    'status': 'Ativo',
+  },
+];
