@@ -1,6 +1,7 @@
   import 'package:flutter/material.dart';
   import 'package:flutter_riverpod/flutter_riverpod.dart';
   import 'package:gerenciamento_bolsistas/Models/Project_State_provider.dart';
+  import 'package:gerenciamento_bolsistas/Screens/BolsistasScreen.dart';
   import 'package:gerenciamento_bolsistas/Widgets/relatorio.dart';
   import 'package:gerenciamento_bolsistas/Style/colors.dart';
   import 'package:gerenciamento_bolsistas/Widgets/button.dart';
@@ -323,7 +324,14 @@
 
                 Button(
                   text: 'Bolsista',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BolsistasScreen(),
+                      ),
+                    );
+                  },
                   size: Size(MediaQuery.of(context).size.width * 0.9, 46),
                   color: cor1,
                   icon: Image.asset(
