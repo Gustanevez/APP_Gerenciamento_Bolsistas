@@ -112,7 +112,6 @@ class Menu2 extends StatelessWidget {
     );
   }
 
-  // Função para criar um item de menu usando Image.asset
   Widget _menuItem({
     required String iconPath,
     required String text,

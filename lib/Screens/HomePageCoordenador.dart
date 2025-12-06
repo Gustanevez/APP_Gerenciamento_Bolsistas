@@ -40,7 +40,7 @@ import 'package:gerenciamento_bolsistas/Widgets/Menu.dart';
                 'Olá, Coordenador!',
                 style: TextStyle(
                   fontSize: 16,
-                  fontFamily: 'ABeeZee',
+                  fontFamily: 'BeeZee',
                   color: Colors.black,
                 ),
               ),

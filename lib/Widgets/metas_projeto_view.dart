@@ -6,8 +6,7 @@ class Metas_views extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return Container(
         width: 337,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -31,7 +30,7 @@ class Metas_views extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Image.asset('assets/Image/list.png', width: 20),
+                    Image.asset('assets/Image/list.png', width: 8),
                     const SizedBox(width: 8),
                     const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +72,7 @@ class Metas_views extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Image.asset('assets/Image/list.png', width: 20),
+                    Image.asset('assets/Image/list.png', width: 8),
                     const SizedBox(width: 8),
                     const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +101,6 @@ class Metas_views extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
+    }
   }
-}

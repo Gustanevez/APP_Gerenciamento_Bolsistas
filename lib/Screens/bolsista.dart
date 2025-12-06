@@ -109,8 +109,6 @@ class CadastroBolsistaScreen extends StatelessWidget {
                   
                   ElevatedButton(
                     onPressed: () {
-                      
-                      
                       print('Cadastrar Bolsista!');
                     },
                     style: ElevatedButton.styleFrom(

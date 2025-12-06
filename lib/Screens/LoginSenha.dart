@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Screens/homePageBolsista.dart';
 import 'package:gerenciamento_bolsistas/Screens/homePageCoordenador.dart';
+import 'package:gerenciamento_bolsistas/Widgets/widget_tela_login.dart';
 
 class LoginSenha extends StatefulWidget {
   final String tipoUsuario; 
@@ -53,10 +54,10 @@ class _LoginSenhaState extends State<LoginSenha> {
 
                       const SizedBox(height: 25),
 
-                      _buildEmailField(),
+                      EmailField(),
                       const SizedBox(height: 18),
 
-                      _buildPasswordField(),
+                      EmailField(),
                       const SizedBox(height: 10),
 
                       Align(
@@ -76,25 +77,8 @@ class _LoginSenhaState extends State<LoginSenha> {
                       const SizedBox(height: 10),
 
                      
-                      ElevatedButton(
-                        onPressed: _entrar,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF4CAF50),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                        ),
-                        child: const Text(
-                          "Entrar",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-
+                    ButtonEntrar(onPressed: _entrar),
+                    
                       const SizedBox(height: 20),
 
                       const Center(child: Text("Ou continue com")),
@@ -104,8 +88,8 @@ class _LoginSenhaState extends State<LoginSenha> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          _socialButton("assets/Image/google.png"),
-                          _socialButton("assets/Image/suap.png"),
+                          SocialButton(imagePath: "assets/Image/google.png"),
+                          SocialButton(imagePath: 'assets/Image/suap.png'),
                         ],
                       ),
 
@@ -146,8 +130,7 @@ class _LoginSenhaState extends State<LoginSenha> {
       ),
     );
   }
-
- 
+  
   void _entrar() {
     if (widget.tipoUsuario == "coordenador") {
       Navigator.pushReplacement(
@@ -160,61 +143,5 @@ class _LoginSenhaState extends State<LoginSenha> {
         MaterialPageRoute(builder: (context) => const Homepagebolsista()),
       );
     }
-  }
-
- 
-  Widget _socialButton(String imagePath) {
-    return Container(
-      width: 100,
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      padding: const EdgeInsets.all(10),
-      child: Image.asset(imagePath, width: 55, height: 55),
-    );
-  }
-
-
-  Widget _buildEmailField() {
-    return TextFormField(
-      decoration: InputDecoration(
-        hintText: "Email institucional",
-        filled: true,
-        fillColor: const Color(0xFFF7F7F7),
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 15,
-          horizontal: 15,
-        ),
-        prefixIcon: const Icon(Icons.email_outlined),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
-        ),
-      ),
-    );
-  }
-
-
-  Widget _buildPasswordField() {
-    return TextFormField(
-      obscureText: true,
-      decoration: InputDecoration(
-        hintText: "Senha",
-        filled: true,
-        fillColor: const Color(0xFFF7F7F7),
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 15,
-          horizontal: 15,
-        ),
-        prefixIcon: const Icon(Icons.lock_outline),
-        suffixIcon: const Icon(Icons.visibility_off_outlined),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
-        ),
-      ),
-    );
   }
 }

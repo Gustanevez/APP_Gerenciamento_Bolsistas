@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
+import 'package:gerenciamento_bolsistas/Widgets/cadastro_metas_widgets.dart';
 
 class ProjetoMetasPage extends StatelessWidget {
   const ProjetoMetasPage({super.key});
@@ -43,17 +44,15 @@ class ProjetoMetasPage extends StatelessWidget {
               const SizedBox(height: 50),
 
            
-              _campo("Selecione Projeto/Bolsista"),
+              Campo(label: "Selecione Projeto/Bolsista",),
               const SizedBox(height: 20),
 
-              _campo("Título da meta", hint: "Ex: Revisão Bibliográfica"),
+              Campo(label: "Título da meta", hint: "Ex: Revisão Bibliográfica"),
               const SizedBox(height: 20),
 
-              _campoComIcone(
-                "Data",
+              CampoComIcone(label:  "Data",
                 icon: Icons.calendar_month,
-                hint: "Prazo: 20/11",
-              ),
+                hint: "Prazo: 20/11",),
 
               const SizedBox(height: 300),
 
@@ -86,37 +85,6 @@ class ProjetoMetasPage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _campo(String label, {String hint = ""}) {
-    return SizedBox(
-      width: double.infinity,
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: label,
-          hintText: hint,
-          labelStyle: const TextStyle(fontFamily: 'ABeeZee', fontSize: 12),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-        ),
-      ),
-    );
-  }
-
-  Widget _campoComIcone(
-    String label, {
-    required IconData icon,
-    String hint = "",
-  }) {
-    return SizedBox(
-      width: double.infinity,
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: label,
-          hintText: hint,
-          labelStyle: const TextStyle(fontFamily: 'ABeeZee', fontSize: 12),
-          suffixIcon: Icon(icon, color: Colors.grey),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-        ),
-      ),
-    );
-  }
 }
+
+

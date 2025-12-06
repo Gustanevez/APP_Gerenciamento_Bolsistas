@@ -14,7 +14,7 @@ class Menu extends StatelessWidget {
       width: 260,
       child: Container(
         decoration: const BoxDecoration(
-          color: Color(0xFFA6F4A2), // Sua cor verde clara
+          color: Color(0xFFA6F4A2), 
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20),
             bottomRight: Radius.circular(20),
@@ -23,7 +23,7 @@ class Menu extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           children: [
-            // --- Cabeçalho do Menu (Ícone de Fechar) ---
+            
             Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 20.0,
@@ -32,7 +32,7 @@ class Menu extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
-                  // Ícone para fechar o Drawer
+                 
                   icon: const Icon(Icons.menu, size: 28, color: Colors.black),
                   onPressed: () {
                     // Fecha o Drawer ao ser clicado
@@ -44,9 +44,9 @@ class Menu extends StatelessWidget {
 
             const SizedBox(height: 5),
 
-            // --- Item de Exemplo: Dashboard (Home) ---
+           
             _menuItem(
-              // Caminho da sua imagem home.png
+             
               iconPath: "assets/Image/home.png",
               text: "Dashboard",
               onTap: () {
@@ -55,7 +55,7 @@ class Menu extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => Homepagecoordenador(),
                   ),
-                ); // Coloque aqui a lógica de navegação para a tela principal/home
+                ); 
               },
             ),
 
@@ -66,7 +66,7 @@ class Menu extends StatelessWidget {
             ),
             _menuItem(
               iconPath:
-                  "assets/Image/data-limite.png", // Usando 'data-limite.png'
+                  "assets/Image/data-limite.png", 
               text: "Projetos e Metas",
               onTap: () {
                 Navigator.push(
@@ -77,7 +77,7 @@ class Menu extends StatelessWidget {
             ),
             _menuItem(
               iconPath:
-                  "assets/Image/relatorio1.png", // Usando o 'Relatorio.png'
+                  "assets/Image/relatorio1.png",
               text: "Relatórios",
               onTap: () {
                 Navigator.push(
@@ -90,7 +90,7 @@ class Menu extends StatelessWidget {
             ),
             _menuItem(
               iconPath:
-                  "assets/Image/data-limite.png", // Reutilizando para Agenda de Prazos
+                  "assets/Image/data-limite.png", 
               text: "Agenda de Prazos",
               onTap: () {},
             ),
@@ -101,13 +101,13 @@ class Menu extends StatelessWidget {
             ),
             _menuItem(
               iconPath:
-                  "assets/Image/configuracoes.png", // Imagem encontrada na sua lista
+                  "assets/Image/configuracoes.png", 
               text: "Configurações",
               onTap: () {},
             ),
             _menuItem(
               iconPath:
-                  "assets/Image/ajuda.png", // Imagem encontrada na sua lista
+                  "assets/Image/ajuda.png", 
               text: "Ajuda",
               onTap: () {},
             ),
@@ -120,10 +120,10 @@ class Menu extends StatelessWidget {
               endIndent: 15,
             ),
 
-            // --- ITEM SAIR ---
+           
             _menuItem(
               iconPath:
-                  "assets/Image/sair.png", // Imagem encontrada na sua lista
+                  "assets/Image/sair.png", 
               text: "Sair",
               onTap: () {
                 Navigator.pushAndRemoveUntil(
@@ -131,16 +131,16 @@ class Menu extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Login()),
                   (rout) => false,
                 );
-                // Lógica de logout
+              
               },
-            ), // Você pode adicionar mais itens aqui, se precisar te // ...
+            ), 
           ],
         ),
       ),
     );
   }
 
-  // Função para criar um item de menu usando Image.asset
+ 
   Widget _menuItem({
     required String iconPath,
     required String text,
@@ -155,7 +155,7 @@ class Menu extends StatelessWidget {
           children: [
             Image.asset(iconPath, width: 24, height: 24),
 
-            const SizedBox(width: 10), // mínimo viável
+            const SizedBox(width: 10), 
 
             Text(
               text,

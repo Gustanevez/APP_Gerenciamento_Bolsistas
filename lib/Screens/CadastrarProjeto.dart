@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
+import 'package:gerenciamento_bolsistas/Widgets/widget_cadastrar_projeto.dart';
 
 class CadastrarProjetoPage extends StatefulWidget {
   const CadastrarProjetoPage({super.key});
@@ -60,14 +61,14 @@ class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
               const SizedBox(height: 50),
 
               
-              _campo("Título do Projeto", controller: _titulo),
+              Campo_projeto(label:"Título do Projeto", controller: _titulo),
               const SizedBox(height: 20),
 
-              _campo("Área", controller: _area),
+              Campo_projeto(label: "Área", controller: _area),
               const SizedBox(height: 20),
 
-              _campoComIcone(
-                "Data de Início",
+              CampoComIcone_projeto(
+                label: "Data de Início",
                 controller: _dataInicio,
                 icon: Icons.calendar_month,
                 hint: "dd/mm/aaaa",
@@ -88,42 +89,6 @@ class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
               const SizedBox(height: 30),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  
-  Widget _campo(String label, {required TextEditingController controller}) {
-    return SizedBox(
-      width: double.infinity,
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          labelStyle: const TextStyle(fontFamily: 'ABeeZee', fontSize: 12),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-        ),
-      ),
-    );
-  }
-
-  Widget _campoComIcone(
-    String label, {
-    required TextEditingController controller,
-    required IconData icon,
-    String hint = "",
-  }) {
-    return SizedBox(
-      width: double.infinity,
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          hintText: hint,
-          labelStyle: const TextStyle(fontFamily: 'ABeeZee', fontSize: 12),
-          suffixIcon: Icon(icon, color: Colors.grey),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         ),
       ),
     );
