@@ -44,10 +44,10 @@ class ProjetoMetasPage extends StatelessWidget {
               const SizedBox(height: 50),
 
            
-              Campo(label: "Selecione Projeto/Bolsista",),
+             selecionar_projeto(label: "Selecione Projeto/Bolsista",),
               const SizedBox(height: 20),
 
-              Campo(label: "Título da meta", hint: "Ex: Revisão Bibliográfica"),
+              titulo_meta(label: "Título da meta", hint: "Ex: Revisão Bibliográfica"),
               const SizedBox(height: 20),
 
               CampoComIcone(label:  "Data",
@@ -62,7 +62,11 @@ class ProjetoMetasPage extends StatelessWidget {
                 children: [
                   Buttonactions(
                     text: "Salvar Metas",
-                    onPressed: () {},
+                    onPressed: () {
+
+                   
+                  Navigator.pop(context);
+                    },
                     size: Size(MediaQuery.of(context).size.width * 0.37, 46),
                     color: cor4,
                   ),

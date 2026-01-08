@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/cadastrarProjeto.dart';
 import 'package:gerenciamento_bolsistas/Screens/registro_Metas.dart';
-import 'package:gerenciamento_bolsistas/Screens/neuro_code_Page.dart';
-import 'package:gerenciamento_bolsistas/Screens/ecoTestPage.dart';
-import 'package:gerenciamento_bolsistas/Screens/geoMentePage.dart';
+import 'package:gerenciamento_bolsistas/Screens/cadastrarProjeto.dart';
+import 'package:gerenciamento_bolsistas/Screens/projeto_details.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 
@@ -39,7 +37,7 @@ class Registerproject extends StatelessWidget {
               },
             ),
             const SizedBox(height: 25),
-            _ListaProjetos(),
+            ProjetoDetails(),
             const SizedBox(height: 25),
             Buttonactions(
               text: "Cadastrar Projetos",
@@ -174,87 +172,6 @@ class _MetaItem extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ListaProjetos extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: const Color(0xFFE7FCEB),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Projetos",
-            style: TextStyle(fontFamily: 'ABeeZee', fontSize: 16),
-          ),
-          const SizedBox(height: 15),
-          _ProjetoItem(
-            titulo: "1. Neuro Code",
-            pageDestino: const NeuroCodePage(),
-          ),
-          const SizedBox(height: 12),
-          _ProjetoItem(titulo: "2. EcoTest", pageDestino: const EcoTestPage()),
-          const SizedBox(height: 12),
-          _ProjetoItem(
-            titulo: "3. GeoMente",
-            pageDestino: const GeoMentePage(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ProjetoItem extends StatelessWidget {
-  final String titulo;
-  final Widget pageDestino;
-
-  const _ProjetoItem({required this.titulo, required this.pageDestino});
-
-  @override
-  Widget build(BuildContext context) {
-    
-    return Material(
-      color: Colors.transparent,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () {
-          debugPrint('Clicou no projeto: $titulo');
-          Navigator.of(
-            context,
-          ).push(MaterialPageRoute(builder: (_) => pageDestino));
-        },
-        child: Container(
-          height: 70,
-          width: double.infinity,
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(18),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.08),
-                blurRadius: 6,
-                offset: const Offset(1, 1),
-              ),
-            ],
-          ),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              titulo,
-              style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 14),
-            ),
-          ),
-        ),
       ),
     );
   }

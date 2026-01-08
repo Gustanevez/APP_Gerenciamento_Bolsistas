@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/homePageCoordenador.dart';
+import 'package:gerenciamento_bolsistas/Screens/home_page_coordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/loginSelect.dart';
 import 'package:gerenciamento_bolsistas/Screens/register_Project.dart';
 import 'package:gerenciamento_bolsistas/Widgets/Relatorio.dart';

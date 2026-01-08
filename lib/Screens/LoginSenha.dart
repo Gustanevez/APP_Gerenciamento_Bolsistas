@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Screens/homePageBolsista.dart';
-import 'package:gerenciamento_bolsistas/Screens/homePageCoordenador.dart';
+import 'package:gerenciamento_bolsistas/Screens/home_page_coordenador.dart';
 import 'package:gerenciamento_bolsistas/Widgets/widget_tela_login.dart';
 
 class LoginSenha extends StatefulWidget {
@@ -57,7 +57,7 @@ class _LoginSenhaState extends State<LoginSenha> {
                       EmailField(),
                       const SizedBox(height: 18),
 
-                      EmailField(),
+                      PasswordField(),
                       const SizedBox(height: 10),
 
                       Align(
