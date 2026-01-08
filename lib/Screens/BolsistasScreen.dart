@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_bolsistas/Screens/bolsista.dart';
+import 'package:gerenciamento_bolsistas/Screens/cadastrar_bolsista.dart';
 
 class BolsistasScreen extends StatelessWidget {
   const BolsistasScreen({super.key});

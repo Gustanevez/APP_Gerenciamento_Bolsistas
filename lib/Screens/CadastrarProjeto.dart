@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gerenciamento_bolsistas/Models/Project.dart';
+import 'package:gerenciamento_bolsistas/Models/project_State_provider.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/widget_cadastrar_projeto.dart';
 
-class CadastrarProjetoPage extends StatefulWidget {
+class CadastrarProjetoPage extends ConsumerStatefulWidget {
   const CadastrarProjetoPage({super.key});
 
   @override
-  State<CadastrarProjetoPage> createState() => _CadastrarProjetoPageState();
+  ConsumerState<CadastrarProjetoPage> createState() => _CadastrarProjetoPageState();
 }
 
-class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
+class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
   final TextEditingController _titulo = TextEditingController();
   final TextEditingController _area = TextEditingController();
   final TextEditingController _dataInicio = TextEditingController();
+  final TextEditingController _dataFim = TextEditingController();
 
   @override
   void dispose() {
     _titulo.dispose();
     _area.dispose();
     _dataInicio.dispose();
+    _dataFim.dispose();
     super.dispose();
   }
 
@@ -82,6 +87,12 @@ class _CadastrarProjetoPageState extends State<CadastrarProjetoPage> {
                 color: cor4,
                 size: Size(MediaQuery.of(context).size.width * 0.6, 46),
                 onPressed: () {
+                  final novoProjeto = Project(titulo:_titulo.text ,
+                   area: _area.text, 
+                   dataInicio: _dataInicio.text, 
+                   dataFim: _dataFim.text);
+                   ref.read(projectProvider.notifier).addProject(novoProjeto);
+                   
                   Navigator.pop(context);
                 },
               ),
