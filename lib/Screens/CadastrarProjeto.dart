@@ -16,16 +16,43 @@ class CadastrarProjetoPage extends ConsumerStatefulWidget {
 class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
   final TextEditingController _titulo = TextEditingController();
   final TextEditingController _area = TextEditingController();
-  final TextEditingController _dataInicio = TextEditingController();
-  final TextEditingController _dataFim = TextEditingController();
+  final TextEditingController _dataInicioController = TextEditingController();
+  final TextEditingController _dataFimController = TextEditingController();
 
+  DateTime? _dataInicioR;
+  DateTime? _dataFimR;
+  
   @override
   void dispose() {
     _titulo.dispose();
     _area.dispose();
-    _dataInicio.dispose();
-    _dataFim.dispose();
+    _dataInicioController.dispose();
+    _dataFimController.dispose();
     super.dispose();
+  }
+
+  Future<void> _selecionarData(bool isInicio) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2030),
+    );
+
+    if (picked != null) {
+      setState(() {
+        
+        String dataFormatada = "${picked.day}/${picked.month}/${picked.year}";
+        
+        if (isInicio) {
+          _dataInicioR = picked; 
+          _dataInicioController.text = dataFormatada; 
+        } else {
+          _dataFimR = picked;
+          _dataFimController.text = dataFormatada;
+        }
+      });
+    }
   }
 
   @override
@@ -72,27 +99,58 @@ class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
               Campo_projeto(label: "Área", controller: _area),
               const SizedBox(height: 20),
 
-              CampoComIcone_projeto(
-                label: "Data de Início",
-                controller: _dataInicio,
-                icon: Icons.calendar_month,
-                hint: "dd/mm/aaaa",
+              GestureDetector(
+                onTap: () => _selecionarData(true), 
+                child: AbsorbPointer(
+                  child: CampoComIcone_projeto(
+                    label: "Data de Início",
+                    controller: _dataInicioController,
+                    icon: Icons.calendar_month,
+                    hint: "Toque para selecionar",
+                  ),
+                ),
               ),
 
               const SizedBox(height: 300),
 
-          
-              Buttonactions(
+              GestureDetector(
+                onTap: () => _selecionarData(false), 
+                child: AbsorbPointer(
+                  child: CampoComIcone_projeto(
+                    label: "Data de Fim",
+                    controller: _dataFimController,
+                    icon: Icons.event_busy, 
+                    hint: "Toque para selecionar",
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 100),
+
+             Buttonactions(
                 text: "Salvar Projeto",
                 color: cor4,
                 size: Size(MediaQuery.of(context).size.width * 0.6, 46),
                 onPressed: () {
-                  final novoProjeto = Project(titulo:_titulo.text ,
-                   area: _area.text, 
-                   dataInicio: _dataInicio.text, 
-                   dataFim: _dataFim.text);
-                   ref.read(projectProvider.notifier).addProject(novoProjeto);
-                   
+                  // Validação simples
+                  if (_titulo.text.isEmpty || _area.text.isEmpty || _dataInicioR == null || _dataFimR == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Preencha todos os campos e datas!")),
+                    );
+                    return;
+                  }
+
+                  
+                  final novoProjeto = Project(
+                    titulo: _titulo.text,
+                    area: _area.text,
+                    dataInicio: _dataInicioR!, 
+                    dataFim: _dataFimR!,       
+                  );
+
+                  // Enviando para o Firebase via Riverpod
+                  ref.read(projectProvider.notifier).addProject(novoProjeto);
+                  
                   Navigator.pop(context);
                 },
               ),

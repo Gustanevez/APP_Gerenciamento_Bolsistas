@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "520276346028",
+    "project_id": "app-gerenciamento-bolsista",
+    "storage_bucket": "app-gerenciamento-bolsista.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520276346028:android:37dd46a7010b2a93f10b09",
+        "android_client_info": {
+          "package_name": "com.example.gerenciamento_bolsistas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520276346028-gjrdcalp1gckr7b9tgjmmug3claklrlg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gerenciamento_bolsistas",
+            "certificate_hash": "ee1ae54e0edd22f1326acab4051203f40cf843f2"
+          }
+        },
+        {
+          "client_id": "520276346028-r76v6a22p15nj58nnpq43q24vco51dpf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gerenciamento_bolsistas",
+            "certificate_hash": "4eef85f88a04a95273e388ee3cb0efa12012df30"
+          }
+        },
+        {
+          "client_id": "520276346028-dpc10jc3fa53m3hi5ihdl5nr1ohqiap2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASTUfJAWNw41C7V23MN6O-lnSrFS-mHQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520276346028-dpc10jc3fa53m3hi5ihdl5nr1ohqiap2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

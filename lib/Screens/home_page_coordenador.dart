@@ -14,7 +14,7 @@
 
       @override
       Widget build(BuildContext context, WidgetRef ref) {
-        final projetos = ref.watch(projectProvider);
+        final projetosAsync = ref.watch(projectProvider);
         return Scaffold(
           drawer: const Menu(),
           appBar: AppBar(
@@ -92,7 +92,19 @@
                   ),
                   const SizedBox(height: 25),
 
-                  card_home_coordenador(projetos: projetos),
+                  projetosAsync.when(
+                data: (listaDeProjetos) {
+                  // Se chegou os dados, mostramos o card passando a lista limpa
+                  return card_home_coordenador(projetos: listaDeProjetos);
+                },
+                loading: () => const SizedBox(
+                  height: 200, // Altura aproximada do card para não "pular" layout
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+                error: (error, stack) => Center(
+                  child: Text('Erro ao carregar: $error'),
+                ),
+              ),
 
                   SizedBox(height: 20),
 

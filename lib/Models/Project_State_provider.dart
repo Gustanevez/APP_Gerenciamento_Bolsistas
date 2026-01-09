@@ -1,26 +1,36 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gerenciamento_bolsistas/Models/Project.dart';
 
-class ProjectNotifier extends Notifier<List<Project>> {
+
+class ProjectNotifier extends StreamNotifier<List<Project>> {
+  
+  
+  final CollectionReference projectsCollection = 
+      FirebaseFirestore.instance.collection('projects');
+
   @override
-  List<Project> build() {
-    return [];
+  Stream<List<Project>> build() {
+    return projectsCollection.snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return Project.fromMap(doc.data() as Map<String, dynamic>, doc.id);
+      }).toList();
+    });
   }
 
-  void addProject(Project project) {
-    state = [...state, project];
+  
+  Future<void> addProject(Project project) async {
+    
+    await projectsCollection.add(project.toMap());
   }
 
-  void removeProject(int index) {
-    final projetos = [...state];
-    projetos.removeAt(index);
-    state = projetos;
+  Future<void> removeProject(String projectId) async {
+    await projectsCollection.doc(projectId).delete();
   }
 
-  void clearProjects() {
-    state = [];
-  }
+  
 }
 
+
 final projectProvider =
-    NotifierProvider<ProjectNotifier, List<Project>>(ProjectNotifier.new);
+    StreamNotifierProvider<ProjectNotifier, List<Project>>(ProjectNotifier.new);

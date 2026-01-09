@@ -3,12 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gerenciamento_bolsistas/Models/project_State_provider.dart';
 import 'package:gerenciamento_bolsistas/Screens/neuro_code_Page.dart';
 
-class ProjetoDetails extends ConsumerWidget{
+class ProjetoDetails extends ConsumerWidget {
   const ProjetoDetails({super.key});
-  
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final projetos = ref.watch(projectProvider);
+    
+    final projetosAsync = ref.watch(projectProvider);
+
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -22,23 +24,56 @@ class ProjetoDetails extends ConsumerWidget{
             "Projetos",
             style: TextStyle(fontFamily: 'ABeeZee', fontSize: 16),
           ),
-         if(projetos.isEmpty)
-          const Text('Nenhum projeto cadastrado', style: TextStyle(
-              fontFamily:'ABeeZee',
-              fontSize:16
-            ),),
-        for(int i = 0; i < projetos.length;i++)...[
-          _ProjetoItem(titulo: "${i+1}.${projetos[i].titulo}", 
-          pageDestino: const NeuroCodePage()
+          
+          const SizedBox(height: 10), 
+
+          
+          projetosAsync.when(
+            data: (listaDeProjetos) {
+              
+              
+              
+              if (listaDeProjetos.isEmpty) {
+                return const Text(
+                  'Nenhum projeto cadastrado',
+                  style: TextStyle(
+                    fontFamily: 'ABeeZee',
+                    fontSize: 16,
+                  ),
+                );
+              }
+
+              
+              return Column(
+                children: [
+                  for (int i = 0; i < listaDeProjetos.length; i++) ...[
+                    _ProjetoItem(
+                      titulo: "${i + 1}.${listaDeProjetos[i].titulo}",
+                      pageDestino: const NeuroCodePage(),
+                    ),
+                    const SizedBox(height: 12),
+                  ]
+                ],
+              );
+            },
+            
+            
+            loading: () => const Center(
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: CircularProgressIndicator(),
+              ),
+            ),
+            
+            
+            error: (erro, stack) => Text('Erro ao carregar: $erro'),
           ),
-          const SizedBox(height: 12,)
-        ]
         ],
       ),
     );
   }
-
 }
+
 class _ProjetoItem extends StatelessWidget {
   final String titulo;
   final Widget pageDestino;
@@ -47,7 +82,6 @@ class _ProjetoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Material(
       color: Colors.transparent,
       child: GestureDetector(
