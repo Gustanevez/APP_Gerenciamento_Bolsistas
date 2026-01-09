@@ -30,7 +30,6 @@ class SocialButton extends StatelessWidget {
 
 class EmailField extends StatelessWidget {
   final TextEditingController? controller;
-
   const EmailField({super.key, this.controller});
 
   @override

@@ -1,12 +1,12 @@
   import 'package:flutter/material.dart';
   import 'package:flutter_riverpod/flutter_riverpod.dart';
-  import 'package:gerenciamento_bolsistas/Models/project_State_provider.dart';
-  import 'package:gerenciamento_bolsistas/Screens/BolsistasScreen.dart';
+  import 'package:gerenciamento_bolsistas/Models/projectStateProvider.dart';
+  import 'package:gerenciamento_bolsistas/Screens/bolsistas_Screen.dart';
   import 'package:gerenciamento_bolsistas/Widgets/relatorio.dart';
   import 'package:gerenciamento_bolsistas/Style/colors.dart';
   import 'package:gerenciamento_bolsistas/Widgets/button.dart';
   import 'package:gerenciamento_bolsistas/Screens/register_project.dart';
-  import 'package:gerenciamento_bolsistas/Widgets/card_home_coordenador.dart';
+  import 'package:gerenciamento_bolsistas/Widgets/card_Home_Coordenador.dart';
   import 'package:gerenciamento_bolsistas/Widgets/Menu.dart';
 
     class Homepagecoordenador extends ConsumerWidget {
@@ -94,11 +94,10 @@
 
                   projetosAsync.when(
                 data: (listaDeProjetos) {
-                  // Se chegou os dados, mostramos o card passando a lista limpa
                   return card_home_coordenador(projetos: listaDeProjetos);
                 },
                 loading: () => const SizedBox(
-                  height: 200, // Altura aproximada do card para não "pular" layout
+                  height: 200, 
                   child: Center(child: CircularProgressIndicator()),
                 ),
                 error: (error, stack) => Center(

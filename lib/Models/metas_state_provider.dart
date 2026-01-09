@@ -1,26 +1,35 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gerenciamento_bolsistas/Models/metas.dart';
 
-class MetaNotifier extends Notifier<List<Metas>> {
+
+class MetasNotifier extends StreamNotifier<List<Metas>> {
+  
+  
+  final CollectionReference projectsCollection = 
+      FirebaseFirestore.instance.collection('metas');
+
   @override
-  List<Metas> build() {
-    return [];
+  Stream<List<Metas>> build() {
+    return projectsCollection.snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return Metas.fromMap(doc.data() as Map<String, dynamic>, doc.id);
+      }).toList();
+    });
   }
 
-  void addMeta(Metas meta) {
-    state = [...state, meta];
+  
+  Future<void> addMeta(Metas metas) async {
+    
+    await projectsCollection.add(metas.toMap());
   }
 
-  void removeProject(int index) {
-    final metas = [...state];
-    metas.removeAt(index);
-    state = metas;
+  Future<void> removeMetas(String metasId) async {
+    await projectsCollection.doc(metasId).delete();
   }
 
-  void clearProjects() {
-    state = [];
-  }
+  
 }
 
-final metatProvider =
-    NotifierProvider<MetaNotifier, List<Metas>>(MetaNotifier.new);
+final metasProvider =
+    StreamNotifierProvider<MetasNotifier, List<Metas>>(MetasNotifier.new);

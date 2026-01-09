@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gerenciamento_bolsistas/Models/Project.dart';
-import 'package:gerenciamento_bolsistas/Models/project_State_provider.dart';
+import 'package:gerenciamento_bolsistas/Models/projectStateProvider.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/widget_cadastrar_projeto.dart';
@@ -43,7 +43,6 @@ class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
       setState(() {
         
         String dataFormatada = "${picked.day}/${picked.month}/${picked.year}";
-        
         if (isInicio) {
           _dataInicioR = picked; 
           _dataInicioController.text = dataFormatada; 
@@ -80,7 +79,6 @@ class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
 
               const SizedBox(height: 65),
 
-              
               const Text(
                 "Cadastrar Projeto",
                 style: TextStyle(
@@ -91,7 +89,6 @@ class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
               ),
 
               const SizedBox(height: 50),
-
               
               Campo_projeto(label:"Título do Projeto", controller: _titulo),
               const SizedBox(height: 20),
@@ -111,8 +108,7 @@ class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
                 ),
               ),
 
-              const SizedBox(height: 300),
-
+              const SizedBox(height: 20),
               GestureDetector(
                 onTap: () => _selecionarData(false), 
                 child: AbsorbPointer(
@@ -132,14 +128,12 @@ class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
                 color: cor4,
                 size: Size(MediaQuery.of(context).size.width * 0.6, 46),
                 onPressed: () {
-                  // Validação simples
                   if (_titulo.text.isEmpty || _area.text.isEmpty || _dataInicioR == null || _dataFimR == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Preencha todos os campos e datas!")),
                     );
                     return;
                   }
-
                   
                   final novoProjeto = Project(
                     titulo: _titulo.text,
@@ -154,7 +148,6 @@ class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
                   Navigator.pop(context);
                 },
               ),
-
               const SizedBox(height: 30),
             ],
           ),

@@ -4,8 +4,10 @@ import 'package:gerenciamento_bolsistas/Models/Project.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/cadastro_metas_widgets.dart';
+import 'package:gerenciamento_bolsistas/Models/metas.dart';
+import 'package:gerenciamento_bolsistas/Models/metas_state_provider.dart';
 
-// MUDANÇA 1: ConsumerStatefulWidget para gerenciar o estado dos campos
+
 class ProjetoMetasPage extends ConsumerStatefulWidget {
   const ProjetoMetasPage({super.key});
 
@@ -14,14 +16,14 @@ class ProjetoMetasPage extends ConsumerStatefulWidget {
 }
 
 class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
-  // Controladores para capturar o texto dos campos
-  final TextEditingController _tituloController = TextEditingController();
-  final TextEditingController _dataController = TextEditingController(); // Campo Data (exibição)
   
-  // Variável para guardar o Projeto escolhido no Dropdown
+  final TextEditingController _tituloController = TextEditingController();
+  final TextEditingController _dataController = TextEditingController(); 
+  
+ 
   Project? _projetoSelecionado;
   
-  // Variável para guardar a data real (DateTime)
+  
   DateTime? _dataMeta;
 
   @override
@@ -31,7 +33,6 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
     super.dispose();
   }
 
-  // Função para limpar tudo
   void _limparCampos() {
     setState(() {
       _tituloController.clear();
@@ -41,7 +42,6 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
     });
   }
 
-  // Função para abrir o calendário
   Future<void> _selecionarData() async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -58,7 +58,7 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
   }
 
   // Função de Salvar
-  void _salvarMeta() {
+ void _salvarMeta() {
     // 1. Validação
     if (_projetoSelecionado == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -72,18 +72,14 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
       );
       return;
     }
-
-    // 2. AQUI VOCÊ VAI SALVAR NO FIREBASE
-    // Exemplo (descomente quando tiver o MetasNotifier pronto):
-    /*
-    final novaMeta = Meta(
-      projetoId: _projetoSelecionado!.id!,
+    final novaMeta = Metas(
+      projetoId: _projetoSelecionado!.id!, // Vincula ao projeto escolhido
       titulo: _tituloController.text,
       prazo: _dataMeta!,
-      concluida: false,
+      status: 'Pendente', // Define o status inicial
     );
+
     ref.read(metasProvider.notifier).addMeta(novaMeta);
-    */
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text("Meta salva com sucesso!")),
@@ -126,14 +122,10 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
               
               const SizedBox(height: 50),
 
-              // -------------------------------------------------------
-              // DROPDOWN DE PROJETOS (Conectado ao Firebase)
-              // -------------------------------------------------------
               SelecionarProjeto(
                 label: "Selecione Projeto/Bolsista",
                 hint: "Toque para escolher",
                 onProjetoSelected: (projeto) {
-                  // Atualiza a variável local quando o usuário escolhe no dropdown
                   setState(() {
                     _projetoSelecionado = projeto;
                   });
@@ -141,19 +133,14 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
               ),
               const SizedBox(height: 20),
 
-              // -------------------------------------------------------
-              // CAMPO TÍTULO
-              // -------------------------------------------------------
+              
               TituloMeta(
                 label: "Título da meta",
                 hint: "Ex: Revisão Bibliográfica",
-                controller: _tituloController, // Conectado ao controller
+                controller: _tituloController, 
               ),
               const SizedBox(height: 20),
 
-              // -------------------------------------------------------
-              // CAMPO DATA (Com Calendário)
-              // -------------------------------------------------------
               GestureDetector(
                 onTap: _selecionarData, // Abre o calendário ao tocar
                 child: AbsorbPointer(

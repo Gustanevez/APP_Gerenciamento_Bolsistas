@@ -4,6 +4,7 @@ import 'package:gerenciamento_bolsistas/Screens/cadastrarProjeto.dart';
 import 'package:gerenciamento_bolsistas/Screens/projeto_details.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
+import 'package:gerenciamento_bolsistas/Widgets/cadastro_metas_widgets.dart';
 
 class Registerproject extends StatelessWidget {
   const Registerproject({super.key});
@@ -56,7 +57,6 @@ class Registerproject extends StatelessWidget {
     );
   }
 }
-
 class _ListaMetas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -69,108 +69,8 @@ class _ListaMetas extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Metas",
-            style: TextStyle(fontFamily: 'ABeeZee', fontSize: 16),
-          ),
           const SizedBox(height: 15),
-          const _MetaItem(
-            numero: "1.",
-            titulo: "Concluir Revisão Bibliográfica",
-            prazo: "20/11",
-            status: "Em andamento",
-            statusColor: Colors.green,
-            iconStatus: Icons.refresh,
-          ),
-          const SizedBox(height: 20),
-          const _MetaItem(
-            numero: "2.",
-            titulo: "Enviar Relatório e Frequência",
-            prazo: "21/12",
-            status: "Concluída",
-            statusColor: Colors.green,
-            iconStatus: Icons.check_circle,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MetaItem extends StatelessWidget {
-  final String numero;
-  final String titulo;
-  final String prazo;
-  final String status;
-  final Color statusColor;
-  final IconData iconStatus;
-
-  const _MetaItem({
-    required this.numero,
-    required this.titulo,
-    required this.prazo,
-    required this.status,
-    required this.statusColor,
-    required this.iconStatus,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.08),
-            blurRadius: 6,
-            offset: const Offset(1, 1),
-          ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(numero, style: const TextStyle(fontFamily: 'ABeeZee')),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  titulo,
-                  style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 14),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  "Prazo: $prazo",
-                  style: const TextStyle(fontFamily: 'ABeeZee', fontSize: 12),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "Status: $status",
-                      style: TextStyle(
-                        fontFamily: 'ABeeZee',
-                        fontSize: 12,
-                        color: statusColor,
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    Icon(iconStatus, color: statusColor, size: 18),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Column(
-            children: const [
-              Icon(Icons.edit, color: Colors.black54),
-              SizedBox(height: 10),
-              Icon(Icons.delete, color: Colors.black54),
-            ],
-          ),
+          ListaMetas(),
         ],
       ),
     );

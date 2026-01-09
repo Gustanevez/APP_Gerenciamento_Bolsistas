@@ -22,7 +22,7 @@ class Menu2 extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           children: [
-            // --- Cabeçalho do Menu (Ícone de Fechar) ---
+           
             Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 20.0,
@@ -43,9 +43,8 @@ class Menu2 extends StatelessWidget {
 
             const SizedBox(height: 5),
 
-            // --- Item de Exemplo: Dashboard (Home) ---
+           
             _menuItem(
-              // Caminho da sua imagem home.png
               iconPath: "assets/Image/home.png",
               text: "Dashboard",
               onTap: () {
@@ -54,7 +53,7 @@ class Menu2 extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => Homepagebolsista(),
                   ),
-                ); // Coloque aqui a lógica de navegação para a tela principal/home
+                ); 
               },
             ),
 
@@ -62,7 +61,7 @@ class Menu2 extends StatelessWidget {
             
             _menuItem(
               iconPath:
-                  "assets/Image/data-limite.png", // Reutilizando para Agenda de Prazos
+                  "assets/Image/data-limite.png", 
               text: "Agenda de Prazos",
               onTap: () {},
             ),
@@ -73,18 +72,18 @@ class Menu2 extends StatelessWidget {
             ),
             _menuItem(
               iconPath:
-                  "assets/Image/configuracoes.png", // Imagem encontrada na sua lista
+                  "assets/Image/configuracoes.png",
               text: "Configurações",
               onTap: () {},
             ),
             _menuItem(
               iconPath:
-                  "assets/Image/ajuda.png", // Imagem encontrada na sua lista
+                  "assets/Image/ajuda.png", 
               text: "Ajuda",
               onTap: () {},
             ),
 
-            // --- SEPARADOR (DIVIDER) ---
+         
             const Divider(
               color: Colors.black45,
               height: 40,
@@ -92,10 +91,10 @@ class Menu2 extends StatelessWidget {
               endIndent: 15,
             ),
 
-            // --- ITEM SAIR ---
+            
             _menuItem(
               iconPath:
-                  "assets/Image/sair.png", // Imagem encontrada na sua lista
+                  "assets/Image/sair.png",
               text: "Sair",
               onTap: () {
                 Navigator.pushAndRemoveUntil(
@@ -103,9 +102,9 @@ class Menu2 extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Login()),
                   (rout) => false,
                 );
-                // Lógica de logout
+              
               },
-            ), // Você pode adicionar mais itens aqui, se precisar te // ...
+            ), 
           ],
         ),
       ),

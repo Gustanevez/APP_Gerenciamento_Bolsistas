@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gerenciamento_bolsistas/Models/project_State_provider.dart';
+import 'package:gerenciamento_bolsistas/Models/projectStateProvider.dart';
 import 'package:gerenciamento_bolsistas/Screens/neuro_code_Page.dart';
 
 class ProjetoDetails extends ConsumerWidget {

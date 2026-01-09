@@ -1,6 +1,10 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:gerenciamento_bolsistas/Screens/CadastrarProjeto.dart';
+import 'package:gerenciamento_bolsistas/Screens/cadastrar_bolsista.dart';
+import 'package:gerenciamento_bolsistas/Screens/homePageBolsista.dart';
+import 'package:gerenciamento_bolsistas/Screens/home_page_coordenador.dart';
 import 'firebase_options.dart'; // gerado pelo flutterfire configure
 import 'package:gerenciamento_bolsistas/Screens/loginSelect.dart';
 
@@ -24,7 +28,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(// remove a faixa de debug
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        'Cadastro': (context) => const CadastroBolsistaScreen(),
+        'Projeto': (context) => const Homepagecoordenador(),
+        'Cadastro_coordenador': (context) => const CadastrarProjetoPage(),
+        'home_bolsista': (context) => const Homepagebolsista()
+      },// remove a faixa de debug
       home: const Login(), // sua tela inicial
     );
   }
