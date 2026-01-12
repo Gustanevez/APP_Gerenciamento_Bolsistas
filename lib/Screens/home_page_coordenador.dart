@@ -2,12 +2,12 @@
   import 'package:flutter_riverpod/flutter_riverpod.dart';
   import 'package:gerenciamento_bolsistas/Models/projectStateProvider.dart';
   import 'package:gerenciamento_bolsistas/Screens/bolsistas_Screen.dart';
-  import 'package:gerenciamento_bolsistas/Widgets/relatorio.dart';
+  import 'package:gerenciamento_bolsistas/Widgets/Coodernador/relatorio.dart';
   import 'package:gerenciamento_bolsistas/Style/colors.dart';
   import 'package:gerenciamento_bolsistas/Widgets/button.dart';
   import 'package:gerenciamento_bolsistas/Screens/register_project.dart';
-  import 'package:gerenciamento_bolsistas/Widgets/card_Home_Coordenador.dart';
-  import 'package:gerenciamento_bolsistas/Widgets/Menu.dart';
+  import 'package:gerenciamento_bolsistas/Widgets/Coodernador/card_Home_Coordenador.dart';
+  import 'package:gerenciamento_bolsistas/Widgets/Coodernador/Menu.dart';
 
     class Homepagecoordenador extends ConsumerWidget {
       const Homepagecoordenador({super.key});

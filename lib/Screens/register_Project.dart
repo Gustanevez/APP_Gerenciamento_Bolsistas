@@ -4,7 +4,7 @@ import 'package:gerenciamento_bolsistas/Screens/cadastrarProjeto.dart';
 import 'package:gerenciamento_bolsistas/Screens/projeto_details.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
-import 'package:gerenciamento_bolsistas/Widgets/cadastro_metas_widgets.dart';
+import 'package:gerenciamento_bolsistas/Widgets/Coodernador/cadastro_metas_widgets.dart';
 
 class Registerproject extends StatelessWidget {
   const Registerproject({super.key});

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Adicionado
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/button.dart';
-import 'package:gerenciamento_bolsistas/Widgets/Menu.dart';
-import 'package:gerenciamento_bolsistas/Widgets/metas_projeto_view.dart';
+import 'package:gerenciamento_bolsistas/Widgets/Bolsistas/Menu2.dart';
+import 'package:gerenciamento_bolsistas/Widgets/Bolsistas/metas_projeto_view.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Screens/registrar_frequencia.dart';
 import 'package:gerenciamento_bolsistas/Models/frequencia_state_provider.dart'; // Para formatar a data
 import 'package:intl/intl.dart';
 
 class Homepagebolsista extends ConsumerWidget {
-  
   const Homepagebolsista({super.key});
 
   @override
@@ -18,7 +17,7 @@ class Homepagebolsista extends ConsumerWidget {
     final frequenciasAsync = ref.watch(frequenciaProvider);
 
     return Scaffold(
-      drawer: const Menu(),
+      drawer: const Menu2(),
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -54,7 +53,7 @@ class Homepagebolsista extends ConsumerWidget {
               const Metas_views(),
               const SizedBox(height: 40),
 
-              // Botão Registrar
+              // Botão Registrar Frequência
               Buttonactions(
                 text: "Registrar Frequência",
                 onPressed: () {
@@ -65,8 +64,21 @@ class Homepagebolsista extends ConsumerWidget {
                     ),
                   );
                 },
-                size: Size(MediaQuery.of(context).size.width * 0.50, 60),
+                
+                size: Size(MediaQuery.of(context).size.width * 0.9, 55),
+                color: cor4
+              ),
+
+              const SizedBox(height: 20), 
+              // Botão Enviar Relatório
+              Buttonactions(
+                text: "Enviar Relatório Mensal",
+                
                 color: cor4,
+                onPressed: () =>
+                    Navigator.pushNamed(context, 'enviar_relatorio'),
+      
+                size: Size(MediaQuery.of(context).size.width * 0.9, 55),
               ),
 
               const SizedBox(height: 60),
@@ -79,77 +91,100 @@ class Homepagebolsista extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(color: Colors.black12),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Minhas Frequências Recentes',
-                      style: TextStyle(
-                        fontFamily: 'ABeeZee',
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                child: // Envolvendo o bloco com GestureDetector para navegação
+                GestureDetector(
+                  onTap: () {
+                    // Navega para a tela de histórico cadastrada na main.dart
+                    Navigator.pushNamed(context, 'historico_frequencia');
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Linha do título com ícone de seta para indicar que é clicável
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Frequências Recentes',
+                            style: TextStyle(
+                              fontFamily: 'ABeeZee',
+                              fontSize: 18,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 16,
+                            color: Colors.black54,
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 15),
+                      const SizedBox(height: 15),
 
-                    frequenciasAsync.when(
-                      loading: () =>
-                          const Center(child: CircularProgressIndicator()),
-                      error: (err, stack) => Text("Erro ao carregar: $err"),
-                      data: (lista) {
-                        if (lista.isEmpty) {
-                          return const Text("Nenhuma frequência registrada.");
-                        }
+                      frequenciasAsync.when(
+                        loading: () =>
+                            const Center(child: CircularProgressIndicator()),
+                        error: (err, stack) => Text("Erro ao carregar: $err"),
+                        data: (lista) {
+                          if (lista.isEmpty) {
+                            return const Text("Nenhuma frequência registrada.");
+                          }
 
-                        // Criando a lista dinâmica
-                        return ListView.separated(
-                          shrinkWrap:
-                              true, 
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: lista.length,
-                          separatorBuilder: (context, index) =>
-                              const Divider(height: 25, color: Colors.black12),
-                          itemBuilder: (context, index) {
-                            final freq = lista[index];
-                            final dataFormatada = DateFormat(
-                              'dd/MM/yyyy',
-                            ).format(freq.data);
+                          // Criando a lista dinâmica
+                          return ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            // Pegamos apenas as 4 mais recentes para o Dashboard
+                            itemCount: lista.length > 4 ? 4 : lista.length,
+                            separatorBuilder: (context, index) => const Divider(
+                              height: 25,
+                              color: Colors.black12,
+                            ),
+                            itemBuilder: (context, index) {
+                              final freq = lista[index];
+                              final dataFormatada = DateFormat(
+                                'dd/MM/yyyy',
+                              ).format(freq.data);
 
-                            return Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset('assets/Image/doc.png', width: 24),
-                                const SizedBox(width: 10),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        freq.descricao,
-                                        style: const TextStyle(
-                                          fontFamily: 'ABeeZee',
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Data: $dataFormatada',
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.black54,
-                                        ),
-                                      ),
-                                    ],
+                              return Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    'assets/Image/doc.png',
+                                    width: 24,
                                   ),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ],
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          freq.descricao,
+                                          style: const TextStyle(
+                                            fontFamily: 'ABeeZee',
+                                            fontSize: 14,
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        Text(
+                                          'Data: $dataFormatada',
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 40),
@@ -160,4 +195,3 @@ class Homepagebolsista extends ConsumerWidget {
     );
   }
 }
-

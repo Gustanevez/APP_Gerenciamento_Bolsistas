@@ -11,13 +11,11 @@ class FrequenciaNotifier extends AsyncNotifier<List<Frequencia>> {
 
   @override
   Future<List<Frequencia>> build() async {
-   
     final stream = _firestore
         .collection('frequencias')
         .orderBy('data', descending: true)
         .snapshots();
 
-    
     return stream.map((snapshot) {
       return snapshot.docs.map((doc) => Frequencia.fromFirestore(doc)).toList();
     }).first; 
@@ -26,7 +24,6 @@ class FrequenciaNotifier extends AsyncNotifier<List<Frequencia>> {
   Future<void> addFrequencia(Frequencia frequencia) async {
     try {
       await _firestore.collection('frequencias').add(frequencia.toMap());
-      
       ref.invalidateSelf(); 
     } catch (e) {
       print("Erro ao salvar frequência: $e");
@@ -34,7 +31,22 @@ class FrequenciaNotifier extends AsyncNotifier<List<Frequencia>> {
     }
   }
 
-  
+  // --- MÉTODO ADICIONADO PARA CORRIGIR O ERRO DE COMPILAÇÃO ---
+  Future<void> updateFrequencia(Frequencia frequencia) async {
+    try {
+      // Atualiza o documento específico usando o ID
+      await _firestore
+          .collection('frequencias')
+          .doc(frequencia.id)
+          .update(frequencia.toMap());
+      
+      ref.invalidateSelf(); // Atualiza a lista na tela automaticamente
+    } catch (e) {
+      print("Erro ao atualizar frequência: $e");
+      rethrow;
+    }
+  }
+
   Future<void> deletarFrequencia(String id) async {
     await _firestore.collection('frequencias').doc(id).delete();
     ref.invalidateSelf();

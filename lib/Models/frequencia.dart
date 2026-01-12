@@ -23,7 +23,21 @@ class Frequencia {
     );
   }
 
- 
+  // ADICIONE ESTE MÉTODO PARA CORRIGIR O ERRO DE COMPILAÇÃO
+  Frequencia copyWith({
+    String? id,
+    DateTime? data,
+    String? descricao,
+    String? bolsistaId,
+  }) {
+    return Frequencia(
+      id: id ?? this.id,
+      data: data ?? this.data,
+      descricao: descricao ?? this.descricao,
+      bolsistaId: bolsistaId ?? this.bolsistaId,
+    );
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'data': Timestamp.fromDate(data),

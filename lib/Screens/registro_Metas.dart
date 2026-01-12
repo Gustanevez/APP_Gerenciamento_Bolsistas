@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gerenciamento_bolsistas/Models/Project.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
-import 'package:gerenciamento_bolsistas/Widgets/cadastro_metas_widgets.dart';
+import 'package:gerenciamento_bolsistas/Widgets/Coodernador/cadastro_metas_widgets.dart';
 import 'package:gerenciamento_bolsistas/Models/metas.dart';
 import 'package:gerenciamento_bolsistas/Models/metas_state_provider.dart';
 

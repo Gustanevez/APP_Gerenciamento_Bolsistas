@@ -4,7 +4,7 @@ import 'package:gerenciamento_bolsistas/Models/Project.dart';
 import 'package:gerenciamento_bolsistas/Models/projectStateProvider.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
-import 'package:gerenciamento_bolsistas/Widgets/widget_cadastrar_projeto.dart';
+import 'package:gerenciamento_bolsistas/Widgets/Coodernador/widget_cadastrar_projeto.dart';
 
 class CadastrarProjetoPage extends ConsumerStatefulWidget {
   const CadastrarProjetoPage({super.key});
@@ -58,6 +58,14 @@ class _CadastrarProjetoPageState extends ConsumerState<CadastrarProjetoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back, color: Colors.black),
+        onPressed: () => Navigator.pop(context),
+      ),
+    ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),

@@ -4,7 +4,7 @@ import 'package:gerenciamento_bolsistas/Models/Project.dart';
 import 'package:gerenciamento_bolsistas/Models/bolsista_state_provider.dart';
 import 'package:gerenciamento_bolsistas/Models/projectStateProvider.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
-import 'package:gerenciamento_bolsistas/Widgets/Info_card_home_coordenador.dart';
+import 'package:gerenciamento_bolsistas/Widgets/Coodernador/Info_card_home_coordenador.dart';
 
 class card_home_coordenador extends ConsumerWidget {
   const card_home_coordenador({super.key, required this.projetos});

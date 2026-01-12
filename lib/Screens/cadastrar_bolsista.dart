@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gerenciamento_bolsistas/Models/bolsista.dart';
 import 'package:gerenciamento_bolsistas/Models/Project.dart';
-import 'package:gerenciamento_bolsistas/Widgets/cadastro_metas_widgets.dart'; // Import do seu widget SelecionarProjeto
+import 'package:gerenciamento_bolsistas/Widgets/Coodernador/cadastro_metas_widgets.dart'; // Import do seu widget SelecionarProjeto
 import 'package:gerenciamento_bolsistas/Models/bolsista_state_provider.dart'; // Import do seu provider de bolsistas
 
 class CadastroBolsistaScreen extends ConsumerStatefulWidget {

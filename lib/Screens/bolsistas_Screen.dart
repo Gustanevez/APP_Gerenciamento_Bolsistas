@@ -27,7 +27,7 @@ class BolsistasScreen extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             
+              // Barra de busca e Botão de Adicionar
               Row(
                 children: [
                   Expanded(
