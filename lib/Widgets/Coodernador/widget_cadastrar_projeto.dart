@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 
-class Campo_projeto extends StatelessWidget {
+class CampoProjeto extends StatelessWidget {
   final String label;
   final String hint;
+  final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final int? quantChar;
 
-  const Campo_projeto({
+  const CampoProjeto({
     super.key,
     required this.label,
     this.hint = "",
     required this.controller,
+    this.validator,
+    this.quantChar
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      
-      child: TextField(
+      child: TextFormField(
         controller: controller,
+        maxLength: quantChar,
         decoration: InputDecoration(
           labelText: label,
           hintText: hint,
@@ -30,19 +34,21 @@ class Campo_projeto extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
         ),
+        validator:validator
       ),
+        
     );
   }
 }
 
 
-class CampoComIcone_projeto extends StatelessWidget {
+class CampoComIconeProjeto extends StatelessWidget {
   final String label;
   final String hint;
   final IconData icon;
   final TextEditingController? controller;
 
-  const CampoComIcone_projeto({
+  const CampoComIconeProjeto({
     super.key,
     required this.label,
     required this.icon,

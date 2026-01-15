@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 
-class InfoCard extends StatelessWidget {
+class InfoCardHomeCoordenador extends StatelessWidget {
   final String titulo;
   final String iconePath;
   final String valor;
   final VoidCallback onTap;
 
-  const InfoCard({
+  const InfoCardHomeCoordenador({
     super.key,
     required this.titulo,
     required this.iconePath,

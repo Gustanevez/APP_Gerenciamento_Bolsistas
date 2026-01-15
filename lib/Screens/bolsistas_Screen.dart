@@ -10,7 +10,7 @@ class BolsistasScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Escuta o provider de bolsistas (Stream real do Firebase)
+    
     final bolsistasAsync = ref.watch(bolsistaProvider);
 
     return Scaffold(

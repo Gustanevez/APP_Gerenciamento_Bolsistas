@@ -22,7 +22,7 @@ class card_home_coordenador extends ConsumerWidget {
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         children: [
-            InfoCard(titulo: 'Bolsistas ativos', 
+            InfoCardHomeCoordenador(titulo: 'Bolsistas ativos', 
             iconePath: 'assets/Image/pessoas.png', 
             valor: bolsistaAsync.when(
               data:(lista) => lista.length.toString(), 
@@ -30,7 +30,7 @@ class card_home_coordenador extends ConsumerWidget {
               error: (_, __) => '0'), 
               onTap: ()=>Navigator.pushNamed(context, 'Cadastro')),
 
-            InfoCard(titulo: 'Projetos', 
+            InfoCardHomeCoordenador(titulo: 'Projetos', 
             iconePath: 'assets/Image/e.png', 
             valor: projetoAsync.when(
               data:(lista) => lista.length.toString(), 
@@ -60,26 +60,6 @@ class card_home_coordenador extends ConsumerWidget {
                     height: 40,
                     color: Colors.black,
                   ),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Tempo de laboratório',
-                        style: TextStyle(fontSize: 14, color: Colors.black),
-                      ),
-
-                      Text(
-                        (projetos.length + 0).toString(),
-                        style: const TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-
                   const Align(
                     alignment: Alignment.bottomRight,
                     child: Icon(

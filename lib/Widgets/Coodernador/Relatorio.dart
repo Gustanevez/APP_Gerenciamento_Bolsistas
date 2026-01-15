@@ -7,12 +7,12 @@ class RelatorioScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Ícone de voltar na esquerda
+       
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        // Título "Olá, Coodernador!" e Ícone de Menu na direita
+        
         title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -28,7 +28,7 @@ class RelatorioScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
-            // --- Título Centralizado "Relatórios" ---
+            
             const Text(
               'Relatórios',
               style: TextStyle(
@@ -39,11 +39,11 @@ class RelatorioScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // --- Bloco Principal de Dados (A Tabela) ---
+            
             _buildDataTableCard(),
             const SizedBox(height: 30),
 
-            // --- Bloco de Botões de Exportação ---
+            
             _buildExportButtons(),
           ],
         ),
@@ -51,7 +51,7 @@ class RelatorioScreen extends StatelessWidget {
     );
   }
 
-  // --- Widget para a Tabela de Dados ---
+
   Widget _buildDataTableCard() {
     // Lista de dados LIMITADA A TRÊS exemplos, como você pediu
     final List<Map<String, dynamic>> data = [
@@ -91,20 +91,20 @@ class RelatorioScreen extends StatelessWidget {
           ),
           const Divider(height: 1, color: Colors.black26),
 
-          // LINHAS DE DADOS (Limitado a 3)
+         
           ...data
               .map(
                 (item) => _buildTableRow(
                   item['nome'],
                   item['data'],
-                  '', // A coluna de status não tem texto, só ícone
+                  '', 
                   isStatusIcon: true,
                   aprovado: item['status'],
                 ),
               )
               .toList(),
 
-          // Ícone de seta para baixo
+        
           const Padding(
             padding: EdgeInsets.only(top: 8.0),
             child: Icon(Icons.keyboard_arrow_down, color: Colors.black54),
@@ -114,7 +114,7 @@ class RelatorioScreen extends StatelessWidget {
     );
   }
 
-  // --- Widget para Linhas da Tabela (AGORA COM ÍCONES CHECK/X) ---
+  
   Widget _buildTableRow(
     String col1,
     String col2,
@@ -133,7 +133,7 @@ class RelatorioScreen extends StatelessWidget {
       color: Colors.black54,
     );
 
-    // Define o ícone de Status se necessário
+   
     Widget statusWidget;
     if (isHeader) {
       statusWidget = Text(col3, style: headerStyle, textAlign: TextAlign.right);
@@ -141,7 +141,7 @@ class RelatorioScreen extends StatelessWidget {
       statusWidget = Icon(
         aprovado
             ? Icons.check_circle
-            : Icons.cancel, // Check (Aprovar) ou X (Rejeitar)
+            : Icons.cancel, 
         color: aprovado ? const Color(0xFF4CAF50) : const Color(0xFFE57373),
         size: 24,
       );
@@ -154,7 +154,7 @@ class RelatorioScreen extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // COLUNA 1: BOLSISTA
+         
           Expanded(
             flex: 4,
             child: Row(
@@ -175,7 +175,7 @@ class RelatorioScreen extends StatelessWidget {
             ),
           ),
 
-          // COLUNA 2: DATA DE ENVIO
+       
           Expanded(
             flex: 3,
             child: Text(
@@ -185,7 +185,6 @@ class RelatorioScreen extends StatelessWidget {
             ),
           ),
 
-          // COLUNA 3: STATUS (ÍCONE)
           Expanded(
             flex: 3,
             child: Align(alignment: Alignment.centerRight, child: statusWidget),
@@ -194,8 +193,6 @@ class RelatorioScreen extends StatelessWidget {
       ),
     );
   }
-
-  // --- Widget para Botões de Exportação (Mantido) ---
   Widget _buildExportButtons() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -219,8 +216,6 @@ class RelatorioScreen extends StatelessWidget {
       ],
     );
   }
-
-  // --- Widget de Botão de Exportação Individual (Mantido) ---
   Widget _buildExportButton({
     required String text,
     required IconData icon,

@@ -31,16 +31,16 @@ class FrequenciaNotifier extends AsyncNotifier<List<Frequencia>> {
     }
   }
 
-  // --- MÉTODO ADICIONADO PARA CORRIGIR O ERRO DE COMPILAÇÃO ---
+ 
   Future<void> updateFrequencia(Frequencia frequencia) async {
     try {
-      // Atualiza o documento específico usando o ID
+      
       await _firestore
           .collection('frequencias')
           .doc(frequencia.id)
           .update(frequencia.toMap());
       
-      ref.invalidateSelf(); // Atualiza a lista na tela automaticamente
+      ref.invalidateSelf(); 
     } catch (e) {
       print("Erro ao atualizar frequência: $e");
       rethrow;

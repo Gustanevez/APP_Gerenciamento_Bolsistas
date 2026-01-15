@@ -81,7 +81,7 @@ class _EnviarRelatorioScreenState extends ConsumerState<EnviarRelatorioScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        // O iconTheme define a cor da seta automática para preto
+      
         iconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
           "Relatórios",
@@ -259,10 +259,10 @@ class _EnviarRelatorioScreenState extends ConsumerState<EnviarRelatorioScreen> {
           style: TextStyle(fontFamily: 'ABeeZee', color: Colors.black),
         ),
         backgroundColor: cor1,
-        behavior: SnackBarBehavior.floating, // Necessário para usar margens
+        behavior: SnackBarBehavior.floating, 
         margin: EdgeInsets.only(
           bottom:
-              MediaQuery.of(context).size.height - 160, // Empurra para o topo
+              MediaQuery.of(context).size.height - 160, 
           left: 20,
           right: 20,
         ),

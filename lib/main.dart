@@ -7,8 +7,8 @@ import 'package:gerenciamento_bolsistas/Screens/homePageBolsista.dart';
 import 'package:gerenciamento_bolsistas/Screens/home_page_coordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/historico_frequencia.dart';
 import 'package:gerenciamento_bolsistas/Screens/enviar_relatorio.dart';
-import 'firebase_options.dart'; // gerado pelo flutterfire configure
-import 'package:gerenciamento_bolsistas/Screens/loginSelect.dart';
+import 'package:gerenciamento_bolsistas/Services/loginUsuario.dart';
+import 'firebase_options.dart'; 
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,13 +27,13 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         'Cadastro': (context) => const CadastroBolsistaScreen(),
-        'Projeto': (context) => const Homepagecoordenador(),
+        'home_coord': (context) => const Homepagecoordenador(),
         'Cadastro_coordenador': (context) => const CadastrarProjetoPage(),
-        'home_bolsista': (context) => const Homepagebolsista(),
+        'home_bolsista': (context) =>  Homepagebolsista(),
         'historico_frequencia': (context) => const HistoricoFrequenciaScreen(),
         'enviar_relatorio': (context) => const EnviarRelatorioScreen(),
-      }, // remove a faixa de debug
-      home: const Login(), // sua tela inicial
+      },
+      home: const VerificaLogin(), 
     );
   }
 }

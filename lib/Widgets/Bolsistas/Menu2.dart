@@ -59,12 +59,12 @@ class Menu2 extends StatelessWidget {
 
             
             
-            _menuItem(
-              iconPath:
-                  "assets/Image/data-limite.png", 
-              text: "Agenda de Prazos",
-              onTap: () {},
-            ),
+            //_menuItem(
+              //iconPath:
+                  //"assets/Image/data-limite.png", 
+             // text: "Agenda de Prazos",
+              //onTap: () {},
+            //),
             _menuItem(
               iconPath: "assets/Image/notificacao.png",
               text: "Notificações",

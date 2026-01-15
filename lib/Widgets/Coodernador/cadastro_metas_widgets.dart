@@ -22,7 +22,7 @@ class SelecionarProjeto extends ConsumerStatefulWidget {
 }
 
 class _SelecionarProjetoState extends ConsumerState<SelecionarProjeto> {
-  Project? _projetoSelecionado; // Variável que guarda a escolha
+  Project? _projetoSelecionado; 
 
   @override
   Widget build(BuildContext context) {

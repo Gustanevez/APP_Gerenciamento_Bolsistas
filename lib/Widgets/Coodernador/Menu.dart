@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_bolsistas/Screens/bolsistas_Screen.dart';
 import 'package:gerenciamento_bolsistas/Screens/home_page_coordenador.dart';
 import 'package:gerenciamento_bolsistas/Screens/loginSelect.dart';
 import 'package:gerenciamento_bolsistas/Screens/register_Project.dart';
 import 'package:gerenciamento_bolsistas/Widgets/Coodernador/Relatorio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -35,7 +37,7 @@ class Menu extends StatelessWidget {
                  
                   icon: const Icon(Icons.menu, size: 28, color: Colors.black),
                   onPressed: () {
-                    // Fecha o Drawer ao ser clicado
+                    
                     Navigator.of(context).pop();
                   },
                 ),
@@ -62,7 +64,11 @@ class Menu extends StatelessWidget {
             _menuItem(
               iconPath: "assets/Image/listabolsistas.png",
               text: "Lista de Bolsistas",
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context)=> BolsistasScreen()),
+                );
+              },
             ),
             _menuItem(
               iconPath:
@@ -88,12 +94,12 @@ class Menu extends StatelessWidget {
                 );
               },
             ),
-            _menuItem(
-              iconPath:
-                  "assets/Image/data-limite.png", 
-              text: "Agenda de Prazos",
-              onTap: () {},
-            ),
+            //_menuItem(
+             // iconPath:
+                  //"assets/Image/data-limite.png", 
+             //text: "Agenda de Prazos",
+             // onTap: () {},/
+           //),
             _menuItem(
               iconPath: "assets/Image/notificacao.png",
               text: "Notificações",
@@ -112,7 +118,7 @@ class Menu extends StatelessWidget {
               onTap: () {},
             ),
 
-            // --- SEPARADOR (DIVIDER) ---
+            
             const Divider(
               color: Colors.black45,
               height: 40,
@@ -125,7 +131,9 @@ class Menu extends StatelessWidget {
               iconPath:
                   "assets/Image/sair.png", 
               text: "Sair",
-              onTap: () {
+              onTap: () async{
+                await FirebaseAuth.instance.signOut();
+                print(FirebaseAuth.instance.currentUser);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => Login()),

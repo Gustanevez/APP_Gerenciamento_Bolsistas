@@ -6,33 +6,40 @@ class Project {
   final String area;
   final DateTime dataFim;
   final DateTime dataInicio;
+  final String coordenadorUid;
+  final List<String> bolsista;
 
   Project({
     required this.titulo,
     required this.area,
     required this.dataInicio,
     required this.dataFim,
+    required this.coordenadorUid,
+    required this.bolsista,
     this.id,
   });
 
   factory Project.fromMap(Map<String, dynamic> map, String docId) {
     return Project(
-      id: docId, // Aqui guardamos o ID do documento
-      titulo: map['name'] ?? '', 
-      area: map['Àrea'] ?? '',
+      id: docId,
+      titulo: map['titulo'] ?? '', 
+      area: map['area'] ?? '',
       dataInicio: (map['dataInicio'] as Timestamp).toDate(),
       dataFim: (map['dataFim'] as Timestamp).toDate(),
+      coordenadorUid: map['coordenadorUid'] ?? '', 
+      bolsista: List<String>.from(map['bolsista'] ?? [],)
     );
   }
 
   
   Map<String, dynamic> toMap() {
     return {
-      'name': titulo,
-      'Área': area,
+      'titulo': titulo,
+      'area': area,
       'dataInicio': dataInicio,
-      'dataFim':dataFim
-      
+      'dataFim':dataFim,
+      'coordenadorUid': coordenadorUid,
+      'bolsista': bolsista,
     };
   }
 }

@@ -4,9 +4,10 @@ import 'package:gerenciamento_bolsistas/Models/Project.dart';
 import 'package:gerenciamento_bolsistas/Widgets/buttonActions.dart';
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:gerenciamento_bolsistas/Widgets/Coodernador/cadastro_metas_widgets.dart';
+import 'package:gerenciamento_bolsistas/Widgets/selecionarData.dart'; 
 import 'package:gerenciamento_bolsistas/Models/metas.dart';
 import 'package:gerenciamento_bolsistas/Models/metas_state_provider.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProjetoMetasPage extends ConsumerStatefulWidget {
   const ProjetoMetasPage({super.key});
@@ -16,14 +17,10 @@ class ProjetoMetasPage extends ConsumerStatefulWidget {
 }
 
 class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
-  
   final TextEditingController _tituloController = TextEditingController();
-  final TextEditingController _dataController = TextEditingController(); 
-  
- 
+  final TextEditingController _dataController = TextEditingController();
+
   Project? _projetoSelecionado;
-  
-  
   DateTime? _dataMeta;
 
   @override
@@ -31,6 +28,22 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
     _tituloController.dispose();
     _dataController.dispose();
     super.dispose();
+  }
+
+  void _notificar(String msg, Color cor) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(msg, textAlign: TextAlign.center, style: const TextStyle(fontFamily: 'ABeeZee')),
+        backgroundColor: cor,
+        behavior: SnackBarBehavior.floating,
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).size.height - 160,
+          left: 20,
+          right: 20,
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+    );
   }
 
   void _limparCampos() {
@@ -42,49 +55,32 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
     });
   }
 
-  Future<void> _selecionarData() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2030),
-    );
-    if (picked != null) {
-      setState(() {
-        _dataMeta = picked;
-        _dataController.text = "${picked.day}/${picked.month}/${picked.year}";
-      });
-    }
-  }
-
-  // Função de Salvar
- void _salvarMeta() {
-    // 1. Validação
+  void _salvarMeta() {
     if (_projetoSelecionado == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Selecione um projeto!")),
-      );
+      _notificar("Selecione um projeto!", Colors.orange);
       return;
     }
     if (_tituloController.text.isEmpty || _dataMeta == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Preencha o título e a data!")),
-      );
+      _notificar("Preencha o título e a data!", Colors.orange);
       return;
     }
+    
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      _notificar("Usuário não autenticado!", Colors.red);
+      return;
+    }
+
     final novaMeta = Metas(
-      projetoId: _projetoSelecionado!.id!, // Vincula ao projeto escolhido
+      projetoId: _projetoSelecionado!.id!,
       titulo: _tituloController.text,
       prazo: _dataMeta!,
-      status: 'Pendente', // Define o status inicial
+      coordenadorUid: user.uid,
+      status: 'Pendente',
     );
 
     ref.read(metasProvider.notifier).addMeta(novaMeta);
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Meta salva com sucesso!")),
-    );
-
+    _notificar("Meta salva com sucesso!", Colors.green);
     Navigator.pop(context);
   }
 
@@ -92,92 +88,77 @@ class _ProjetoMetasPageState extends ConsumerState<ProjetoMetasPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
+          "Registro de Metas",
+          style: TextStyle(color: Colors.black, fontFamily: 'ABeeZee', fontWeight: FontWeight.bold),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Align(
+              const Align(
                 alignment: Alignment.centerRight,
-                child: const Text(
+                child: Text(
                   "Olá, Coordenador",
-                  style: TextStyle(
-                    fontFamily: 'ABeeZee',
-                    fontSize: 16,
-                    color: Colors.black87,
-                  ),
+                  style: TextStyle(fontFamily: 'ABeeZee', fontSize: 14, color: Colors.black54),
                 ),
               ),
-              const SizedBox(height: 65),
-              
-              const Text(
-                "Registro de Metas",
-                style: TextStyle(
-                  fontFamily: 'ABeeZee',
-                  fontSize: 16,
-                  color: Colors.black87,
-                ),
-              ),
-              
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
 
               SelecionarProjeto(
-                label: "Selecione Projeto/Bolsista",
+                label: "Projeto / Bolsista",
                 hint: "Toque para escolher",
                 onProjetoSelected: (projeto) {
-                  setState(() {
-                    _projetoSelecionado = projeto;
-                  });
+                  setState(() => _projetoSelecionado = projeto);
                 },
               ),
               const SizedBox(height: 20),
 
-              
               TituloMeta(
                 label: "Título da meta",
                 hint: "Ex: Revisão Bibliográfica",
-                controller: _tituloController, 
+                controller: _tituloController,
               ),
               const SizedBox(height: 20),
 
-              GestureDetector(
-                onTap: _selecionarData, // Abre o calendário ao tocar
-                child: AbsorbPointer(
-                  child: CampoComIcone(
-                    label: "Data Prazo",
-                    icon: Icons.calendar_month,
-                    hint: "dd/mm/aaaa",
-                    controller: _dataController, // Conectado ao controller
-                  ),
-                ),
+              
+              SeletorDataCampo(
+                label: "Data Prazo",
+                controller: _dataController,
+                dataInicialLimite: DateTime.now(), 
+                icone: Icons.calendar_month,
+                onDataSelecionada: (data) {
+                  setState(() => _dataMeta = data);
+                },
               ),
 
-              const SizedBox(height: 300),
+              const SizedBox(height: 60),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // BOTÃO SALVAR
                   Buttonactions(
-                    text: "Salvar Metas",
-                    onPressed: _salvarMeta, // Chama a função de salvar
-                    size: Size(MediaQuery.of(context).size.width * 0.37, 46),
+                    text: "Salvar Meta",
+                    onPressed: _salvarMeta,
+                    size: Size(MediaQuery.of(context).size.width * 0.4, 48),
                     color: cor4,
                   ),
-
                   const SizedBox(width: 15),
-
-                  // BOTÃO LIMPAR
                   Buttonactions(
-                    text: "Limpar Campos",
-                    onPressed: _limparCampos, // Chama a função de limpar
-                    size: Size(MediaQuery.of(context).size.width * 0.37, 46),
-                    color: const Color.fromARGB(255, 137, 137, 137),
+                    text: "Limpar",
+                    onPressed: _limparCampos,
+                    size: Size(MediaQuery.of(context).size.width * 0.4, 48),
+                    color: Colors.grey,
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
             ],
           ),
         ),

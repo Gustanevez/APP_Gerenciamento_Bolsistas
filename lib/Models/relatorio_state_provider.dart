@@ -11,7 +11,7 @@ class RelatorioNotifier extends AsyncNotifier<List<Relatorio>> {
 
   @override
   Future<List<Relatorio>> build() async {
-    // Busca os relatórios do Firebase em tempo real
+    
     final snapshot = await _firestore
         .collection('relatorios')
         .orderBy('data', descending: true)
@@ -22,9 +22,9 @@ class RelatorioNotifier extends AsyncNotifier<List<Relatorio>> {
 
   Future<void> addRelatorio(Relatorio relatorio) async {
     try {
-      // Salva no Firestore para não sumir ao fechar o app
+      
       await _firestore.collection('relatorios').add(relatorio.toMap());
-      ref.invalidateSelf(); // Atualiza a lista na tela na hora
+      ref.invalidateSelf(); 
     } catch (e) {
       print("Erro ao salvar relatório: $e");
       rethrow;

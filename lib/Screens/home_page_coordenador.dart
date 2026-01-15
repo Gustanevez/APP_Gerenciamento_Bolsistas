@@ -18,23 +18,10 @@
         return Scaffold(
           drawer: const Menu(),
           appBar: AppBar(
-            automaticallyImplyLeading:
-                false, 
             title: Row(
-              children: [
-            
-                Builder(
-                  builder: (context) {
-                    return IconButton(
-                      icon: const Icon(Icons.menu, size: 28),
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                    );
-                  },
-                ),
-
-                const Spacer(), 
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+ 
 
                 const Text(
                   'Olá, Coordenador!',
@@ -44,9 +31,6 @@
                     color: Colors.black,
                   ),
                 ),
-
-                const Spacer(), 
-              
               ],
             ),
           ),

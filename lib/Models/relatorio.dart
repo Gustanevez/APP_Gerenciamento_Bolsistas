@@ -13,7 +13,7 @@ class Relatorio {
     required this.bolsistaId
   });
 
-  // Converte do Firebase para o Flutter
+  
   factory Relatorio.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data() as Map<String, dynamic>;
     return Relatorio(
@@ -24,7 +24,7 @@ class Relatorio {
     );
   }
 
-  // Converte do Flutter para o Firebase
+  
   Map<String, dynamic> toMap() {
     return {
       'titulo': titulo,

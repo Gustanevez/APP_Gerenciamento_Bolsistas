@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gerenciamento_bolsistas/Models/frequencia_state_provider.dart';
 import 'package:gerenciamento_bolsistas/Models/frequencia.dart';
-import 'package:gerenciamento_bolsistas/Screens/registrar_frequencia.dart'; // Import necessário para navegação
+import 'package:gerenciamento_bolsistas/Screens/registrar_frequencia.dart'; 
 import 'package:gerenciamento_bolsistas/Style/colors.dart';
 import 'package:intl/intl.dart';
 
@@ -46,7 +46,7 @@ class HistoricoFrequenciaScreen extends ConsumerWidget {
   Widget _buildCardHistorico(BuildContext context, Frequencia freq) {
     String dataFormatada = DateFormat('dd/MM/yyyy').format(freq.data);
     
-    // REGRA: Verificar se a data do registro é hoje
+   
     final hoje = DateTime.now();
     final bool ehHoje = freq.data.day == hoje.day && 
                        freq.data.month == hoje.month && 
@@ -59,7 +59,7 @@ class HistoricoFrequenciaScreen extends ConsumerWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            // ignore: deprecated_member_use
+            
             color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
@@ -82,7 +82,7 @@ class HistoricoFrequenciaScreen extends ConsumerWidget {
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   ],
                 ),
-                // O botão de EDITAR só aparece se for o registro de hoje
+                
                 if (ehHoje) 
                   IconButton(
                     icon: const Icon(Icons.edit, color: Colors.blueGrey, size: 20),
@@ -102,7 +102,7 @@ class HistoricoFrequenciaScreen extends ConsumerWidget {
                 style: const TextStyle(color: Colors.grey, fontSize: 14)),
             const Divider(height: 30),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start, // Alinhado à esquerda agora
+              mainAxisAlignment: MainAxisAlignment.start, 
               children: [
                 const Icon(Icons.calendar_today, color: Colors.grey, size: 18),
                 const SizedBox(width: 8),
